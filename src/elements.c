@@ -14,6 +14,6 @@ void moveBall(Ball ball) {
  * move Bar depending on the player input
  * @method moveBar
  */
-void moveBar(Bar playerBall, int direction) {
+void moveBar(Player player, int direction) {
 
 }

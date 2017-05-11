@@ -7,12 +7,7 @@
 typedef struct Color3f{
 	float r, g, b;
 }
-/* PLAYERS */
-typedef struct Player {
-	char name;
-	int lives;
-	int score;
-}
+
 
 /* ELEMENTS */
 typedef struct Point{
@@ -41,9 +36,15 @@ typedef struct Brick {
 	Color3f color;
 } Brick;
 
+/* PLAYERS */
+typedef struct Player {
+	char name;
+	int lives;
+	int score;
+	Bar playerBar;
+}
 
 /* ENUM */
-
 typedef enum TypeBrick {
 	basics, explosion
 };

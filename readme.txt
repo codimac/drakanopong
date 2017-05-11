@@ -8,10 +8,10 @@ But :
 3. changement de niveaux
 
 /*******************************
- **	BASIQUES              **
+ **	    BASIQUES              **
  *******************************/
-D�placement de la balle
-Barres contr�lables via clavier
+Déplacement de la balle
+Barres contrôlables via clavier
 	mouvement horizontale
 	A et Z pour J1
 	fleches directionnelles :  <- et -> pour j2
@@ -30,7 +30,7 @@ Gestion des points de vie
 	Gestion des bonus des briques
 
 > NIVEAUX
-	Cr�ation du fichier de niveau
+	Création du fichier de niveau
 	Chargement du niveau via un fichier
 
 	rappel du format :
@@ -69,10 +69,10 @@ Gestion des points de vie
 
 ********************************
 ********************************
-**			      **
-**	  EXTENTIONs          **
+**			                  **
+**	  EXTENTIONS              **
 **   proposées par le prof    **
-**			      **
+**			                  **
 ********************************
 ********************************
 
@@ -87,7 +87,7 @@ Gestion des points de vie
 
 
  *******************************
- *	  EXTENTIONs           *
+ *	  EXTENTIONS               *
  *     Proposées par nous      *
  *******************************
 

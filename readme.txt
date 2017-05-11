@@ -3,7 +3,7 @@ nom du fichier à rendre :
 arkanopong_LaranYora_Nornei.zip
 
 But :
-1. finir l'obligatoire
+1. finir l'obligatoire (12 points) + rapport
 2. faire l'IA !
 3. changement de niveaux
 

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -ansi
 LDFLAGS = -lSDL -lSDL -lGLU -lGL -lm
 
-APP_BIN = arkanopong
+APP_BIN = Drakanopong
 
 SRC_PATH = src
 OBJ_PATH = obj
@@ -19,7 +19,7 @@ $(APP_BIN): $(OBJ_FILES)
 	@mkdir -p $(BIN_PATH)
 	$(CC) -o $(BIN_PATH)/$(APP_BIN) $(OBJ_FILES) $(LDFLAGS)
 	@echo "--------------------------------------------------------------"
-	@echo "                 to execute type: ./$(BIN) &"
+	@echo "                 to execute type: ./$(APP_BIN) &"
 	@echo "--------------------------------------------------------------"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

@@ -1,8 +1,8 @@
-nom du fichier à rendre : 
+nom du fichier Ã  rendre :
 
-arkanopong_Pierre-Jean_Gazeau.zip
+arkanopong_LaranYora_Nornei.zip
 
-But : 
+But :
 1. finir l'obligatoire
 2. faire l'IA !
 3. changement de niveaux
@@ -10,29 +10,29 @@ But :
 /*******************************
  **	BASIQUES              **
  *******************************/
-Déplacement de la balle
-Barres contrôlables via clavier
-	mouvement horizontale 
+Dï¿½placement de la balle
+Barres contrï¿½lables via clavier
+	mouvement horizontale
 	A et Z pour J1
-	flèches directionnelles :  <- et -> pour j2
-	
-Gestion de deux balles à la fois
-Gestion des deux barres à la fois
-	penser à la remise en circulation d'une balle perdue
+	fleches directionnelles :  <- et -> pour j2
+
+Gestion de deux balles Ã  la fois
+Gestion des deux barres Ã  la fois
+	penser Ã  la remise en circulation d'une balle perdue
 
 Gestion des points de vie
 
-> BRIQUES : 
-	Gestion des briques 
+> BRIQUES :
+	Gestion des briques
 		blocage
 		destruction
 
 	Gestion des bonus des briques
 
 > NIVEAUX
-	Création du fichier de niveau
+	Crï¿½ation du fichier de niveau
 	Chargement du niveau via un fichier
-	
+
 	rappel du format :
 
 	largeur hauteur
@@ -50,20 +50,20 @@ Gestion des points de vie
 	Affichage des points de vie
 	La balle
 	La barre
-	Afficher le gagnant et proposer de replay 
+	Afficher le gagnant et proposer de replay
 		(ok c'est pas dans le sujet mais c'est la base non ?)
 
 
-------Type de briques (idées)-------
+------Type de briques (idÃ©es)-------
 
-> Normal 
-> briques disparaîssant après 1 ou plusieurs impact(s)
+> Normal
+> briques disparaissant aprÃ¨s 1 ou plusieurs impact(s)
 > Soin
-> Rétrécissement de la barre adverse
-> Agrandissement de sa propre barre (à voir combien de fois c'est cumulable)
-> Invulnérabilité pendant 10 secondes
+> RÃ©trÃ©cissement de la barre adverse
+> Agrandissement de sa propre barre (Ã  voir combien de fois c'est cumulable)
+> InvulnÃ©rabilitÃ© pendant 10 secondes
 > Briques indestructibles
-> Poison (fait perdre une vie à l'adversaire)
+> Poison (fait perdre une vie Ã  l'adversaire)
 ------------------------------------
 
 
@@ -71,36 +71,28 @@ Gestion des points de vie
 ********************************
 **			      **
 **	  EXTENTIONs          **
-**   proposées par le prof    **
+**   proposÃ©es par le prof    **
 **			      **
 ********************************
 ********************************
 
 > IA !! <3 <3 <3
-	Nécéssite un écran de démarrage qui donne le choix entre
+	NÃ©cÃ©ssite un Ã©cran de dÃ©marrage qui donne le choix entre
 	1 ou 2 joueurs
-> Changer le thème graphique
-	Nécéssite une menu
-> Connexion en réseau pour jouer sur internet
-> La generalisation du jeu a un nombre quelconque de joueurs 
+> Changer le thÃ¨me graphique
+	NÃ©cÃ©ssite une menu
+> Connexion en rÃ©seau pour jouer sur internet
+> La generalisation du jeu a un nombre quelconque de joueurs
 	(on peut imaginer qu'ils soient repartis sur un polygone regulier).
 
 
  *******************************
  *	  EXTENTIONs           *
- *     Proposées par nous      *
- ******************************* 
+ *     ProposÃ©es par nous      *
+ *******************************
 
 > Changer de niveau
 	menu pour les niveaux
 > Mettre en pause le jeu
 > Timer
-> 
-
-
-
-
-
-
-
-
+>

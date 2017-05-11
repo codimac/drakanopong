@@ -7,6 +7,8 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 
+#include "elements.h"
+
 static unsigned int WINDOW_WIDTH = 800;
 static unsigned int WINDOW_HEIGHT = 600;
 static const unsigned int BIT_PER_PIXEL = 32;

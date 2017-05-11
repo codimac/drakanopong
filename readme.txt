@@ -64,6 +64,8 @@ Gestion des points de vie
 > Invulnérabilité pendant 10 secondes
 > Briques indestructibles
 > Poison (fait perdre une vie à l'adversaire)
+> brique explosive
+
 ------------------------------------
 
 
@@ -95,4 +97,14 @@ Gestion des points de vie
 	menu pour les niveaux
 > Mettre en pause le jeu
 > Timer
->
+> Différentes Difficultés :
+    > facile / normal / difficile
+    > menu
+    > change la vitesse de la balle
+    > changement de la couleur du fond (bleu < vert < rouge)
+> une image de fond (dragon powa)
+> gestion manette
+    > manettes seules
+    > manettes + claviers
+    >> assignement à un joueur
+Choisir pseudo de joueur

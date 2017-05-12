@@ -19,7 +19,7 @@ $(APP_BIN): $(OBJ_FILES)
 	@mkdir -p $(BIN_PATH)
 	$(CC) -o $(BIN_PATH)/$(APP_BIN) $(OBJ_FILES) $(LDFLAGS)
 	@echo "--------------------------------------------------------------"
-	@echo "                 to execute type: ./$(APP_BIN) &"
+	@echo "                 to execute type: ./$(BIN_PATH)/$(APP_BIN) &"
 	@echo "--------------------------------------------------------------"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

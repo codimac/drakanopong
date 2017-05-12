@@ -6,7 +6,7 @@
 
 typedef struct Color3f{
 	float r, g, b;
-}
+} Color3f;
 
 
 /* ELEMENTS */
@@ -20,19 +20,19 @@ typedef struct Vector{
 
 typedef struct Ball{
 	Point center; /*position*/
-	Vecteur vitesse;
+	Vector vitesse;
 	float rayon;
 	Color3f color;
 } Ball;
 
-typedef Bar {
+typedef struct Bar {
 	Point center;
 	Color3f color;
 } Bar;
 
 typedef struct Brick {
 	int type;
-	int display = 1;
+	int display;
 	Color3f color;
 } Brick;
 
@@ -42,13 +42,13 @@ typedef struct Player {
 	int lives;
 	int score;
 	Bar playerBar;
-}
+} Player;
 
 /* ENUM */
 typedef enum TypeBrick {
 	basics, explosion
-};
+}TypeBrick;
 
-typedef enum direction {
+typedef enum Direction {
 	left, right, stop
-};
+} Direction;

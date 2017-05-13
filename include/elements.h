@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include "utils.h"
 
 static unsigned int GAME_WIDTH = 600;
 static unsigned int GAME_HEIGHT = 400;
@@ -10,7 +11,6 @@ static unsigned int GAME_HEIGHT = 400;
 typedef struct Color3f{
 	float r, g, b;
 } Color3f;
-
 
 /* ELEMENTS */
 typedef struct Point{
@@ -57,3 +57,9 @@ typedef enum TypeBrick {
 typedef enum Direction {
 	left, right, stop
 } Direction;
+/**
+ * FUNCTIONS
+ **/
+Bar initBar();
+void moveBar(Player player, int direction);
+void displayBar(const Bar b);

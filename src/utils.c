@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <GL/gl.h>
 #include "utils.h"
 
 /**
@@ -9,5 +10,14 @@
  * return float value between -1 and 1
 **/
 float convertPixelToMark(int pixel, int mark, int axis){
-	return axis*(-1+2*pixel/mark);
+	return axis*(-1+2* (float) pixel/mark);
+}
+
+void rectangle(float width, float height){
+	glBegin(GL_POLYGON);
+		glVertex2f(-width,-height);
+		glVertex2f(width,-height);
+		glVertex2f(width,height);
+		glVertex2f(-width,height);
+	glEnd();
 }

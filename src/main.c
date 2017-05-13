@@ -7,7 +7,7 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 
-#include "elements.h"
+#include "game.h"
 
 static unsigned int WINDOW_WIDTH = 800;
 static unsigned int WINDOW_HEIGHT = 600;
@@ -40,20 +40,15 @@ int main(int argc, char** argv) {
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 
+
+
 		int loop = 1;
 		while(loop) {
 			Uint32 startTime = SDL_GetTicks();
 
 			/* affichage */
 			glClear(GL_COLOR_BUFFER_BIT);
-
-			int size = 100;
-			glBegin(GL_POLYGON);
-				glVertex2f(-1,-1);
-				glVertex2f(1,-1);
-				glVertex2f(1,1);
-				glVertex2f(-1,1);
-			glEnd();
+			initGame();
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

@@ -1,3 +1,5 @@
+# Drakanopong
+# Linux makefile
 CC = gcc
 CFLAGS = -Wall -ansi
 LDFLAGS = -lSDL -lSDL -lGLU -lGL -lm

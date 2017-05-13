@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <math.h>
 
+static unsigned int GAME_WIDTH = 600;
+static unsigned int GAME_HEIGHT = 400;
+
 /* COULEUR */
 
 typedef struct Color3f{
@@ -20,13 +23,15 @@ typedef struct Vector{
 
 typedef struct Ball{
 	Point center; /*position*/
-	Vector vitesse;
+	Vector speed;
 	float rayon;
 	Color3f color;
 } Ball;
 
 typedef struct Bar {
-	Point center;
+	Point position;
+	Vector speed;
+	float size;
 	Color3f color;
 } Bar;
 

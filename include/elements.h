@@ -1,3 +1,6 @@
+#ifndef _ELEMENTS
+#define _ELEMENTS
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -58,12 +61,9 @@ typedef enum TypeBrick {
 	basics, explosion
 }TypeBrick;
 
-typedef enum Direction {
-	left, right, stop
-} Direction;
+
 /**
  * FUNCTIONS
  **/
-Bar initBar();
-void moveBar(Player player, int direction);
-void displayBar(const Bar b);
+
+#endif

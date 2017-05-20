@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "elements.h"
+#include "bar.h"
 
 typedef enum Hardness{
 	easy, normal, hardcore

@@ -13,6 +13,11 @@ float convertPixelToMark(int pixel, int mark, int axis){
 	return axis*(-1+2* (float) pixel/mark);
 }
 
+float centeredPixelToMark(int pixel, int mark, int axis) {
+	pixel = (mark - pixel) /2;
+	return axis*(-1+2* (float) pixel/mark);
+}
+
 void rectangle(float width, float height){
 	glBegin(GL_POLYGON);
 		glVertex2f(-width,-height);

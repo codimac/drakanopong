@@ -1,16 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <GL/gl.h>
 #include "utils.h"
 
-static unsigned int GAME_WIDTH = 600;
-static unsigned int GAME_HEIGHT = 400;
+static unsigned int WINDOW_WIDTH = 800;
+static unsigned int WINDOW_HEIGHT = 600;
+static unsigned int GAME_WIDTH = 400;
+static unsigned int GAME_HEIGHT = 600;
+static unsigned int DEFAULT_HEARTS = 5;
 
 /* COULEUR */
 
-typedef struct Color3f{
-	float r, g, b;
-} Color3f;
+typedef struct Color4f{
+	float r, g, b, alpha;
+} Color4f;
 
 /* ELEMENTS */
 typedef struct Point{
@@ -25,20 +29,20 @@ typedef struct Ball{
 	Point center; /*position*/
 	Vector speed;
 	float rayon;
-	Color3f color;
+	Color4f color;
 } Ball;
 
 typedef struct Bar {
 	Point position;
 	Vector speed;
 	float size;
-	Color3f color;
+	Color4f color;
 } Bar;
 
 typedef struct Brick {
 	int type;
 	int display;
-	Color3f color;
+	Color4f color;
 } Brick;
 
 /* PLAYERS */

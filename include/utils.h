@@ -6,4 +6,5 @@ typedef enum Axis{
 }Axis;
 
 float convertPixelToMark(int pixel, int mark, int axis);
+float centeredPixelToMark(int pixel, int mark, int axis);
 void rectangle(float width, float height);

@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 #include "game.h"
-
+#include "bar.h"
+#include "player.h"
 /**
  * create a default game settings
  **/
@@ -24,4 +25,8 @@ void initGame(Game game) {
 	Bar b = initBar();
 	setBarPosition(&b, 400, 550);
 	displayBar(b);
+}
+
+void drawGame(){
+	Uint8 *keystates = SDL_GetKeyState(NULL);
 }

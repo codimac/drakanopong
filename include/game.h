@@ -1,23 +1,30 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include "elements.h"
-#include "bar.h"
+#ifndef _GAME
+#define _GAME
 
-typedef enum Hardness{
-	easy, normal, hardcore
-} Hardness;
+	#include <stdlib.h>
+	#include <stdio.h>
+	#include <math.h>
+	#include "elements.h"
+	#include "bar.h"
+	#include <SDL/SDL.h>
 
-typedef enum GraphicTheme {
-	dragon, retro
-} GraphicTheme;
+	typedef enum Hardness{
+		easy, normal, hardcore
+	} Hardness;
 
-typedef struct Game {
-	int lvl;
-	int IA;
-	int graphicTheme;
-	int hardness;
-} Game;
+	typedef enum GraphicTheme {
+		dragon, retro
+	} GraphicTheme;
 
-void initGame(Game game);
-Game newGame();
+	typedef struct Game {
+		int lvl;
+		int IA;
+		int graphicTheme;
+		int hardness;
+	} Game;
+
+	void initGame(Game game);
+	Game newGame();
+	void drawGame();
+
+#endif

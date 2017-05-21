@@ -1,10 +1,13 @@
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef _UTILS
+#define _UTILS
+	#include <stdlib.h>
+	#include <stdio.h>
 
-typedef enum Axis{
-	axisX = 1, axisY = -1
-}Axis;
+	typedef enum Axis{
+		axisX = 1, axisY = -1
+	}Axis;
 
-float convertPixelToMark(int pixel, int mark, int axis);
-float centeredPixelToMark(int pixel, int mark, int axis);
-void rectangle(float width, float height);
+	float convertPixelToMark(int pixel, int mark, int axis);
+	float centeredPixelToMark(int pixel, int mark, int axis);
+	void rectangle(float width, float height);
+#endif

@@ -3,13 +3,14 @@
 #include <math.h>
 #include <GL/gl.h>
 #include "elements.h"
+#include "bar.h"
 
 Bar initBar(){
 	Bar b;
 
 	b.position.x = 0;
 	b.position.y = 0;
-	b.speed.x = convertPixelToMark(10, WINDOW_WIDTH, axisX);
+	b.speed.x = -centeredPixelToMark(2, WINDOW_WIDTH, axisX);
 	b.speed.y = 0;
 	b.size = centeredPixelToMark(100, WINDOW_WIDTH, axisX);
 	b.color.r = 1.0;
@@ -29,17 +30,21 @@ void setBarPosition(Bar *b, int x, int y) {
  * move Bar depending on the player input
  * @method moveBar
  */
-/*
+
 void moveBar(Bar *b, int direction) {
+	int x;
+/*printf("%f\n",b->speed.x );*/
 	switch (direction) {
-		case "a":
-		case "e"
+		case left :
+			b->position.x = b->position.x - b->speed.x ;
+			break;
+		case right :
+			b->position.x = b->position.x + b->speed.x;
+			break;
 	}
-	setBarPosition(b,);
-} */
+}
 
 void displayBar(Bar b){
-	float x = b.size;
 	float y = convertPixelToMark(GAME_HEIGHT/2 - 4, GAME_HEIGHT, axisY);
 
 	glPushMatrix();

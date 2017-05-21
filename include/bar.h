@@ -7,9 +7,11 @@
 	#include "elements.h"
 
 	static unsigned int MARGIN_BAR = 25;
+	static unsigned int DEFAULT_WIDTH_BAR = 75;
+	static unsigned int DEFAULT_SPEED_BAR = 10;
 
 	typedef enum Direction {
-		left, right, stop
+		left, right
 	} Direction;
 
 	typedef struct Bar {
@@ -18,7 +20,7 @@
 		float size;
 		Color4f color;
 	} Bar;
-	
+
 	Bar initBar();
 	void moveBar(Bar *b, int direction);
 	void displayBar(const Bar b);

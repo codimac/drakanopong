@@ -10,10 +10,11 @@
 #include "game.h"
 #include "bar.h"
 #include "player.h"
+#include "elements.h"
+#include "utils.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
-
 
 void reshape(unsigned int width, unsigned int height) {
 	glViewport(0, 0, width, height);
@@ -70,7 +71,7 @@ int main(int argc, char** argv) {
 			glLoadIdentity();
 			/* affichage */
 			glClear(GL_COLOR_BUFFER_BIT);
-			glColor3f(0.7,0.3,0.2);
+			glColor3f(0.7,0.3,0.2); /* random color bonjour.*/
 
 			rectangle(game.width, game.height);
 			/*initGame(game);*/

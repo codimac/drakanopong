@@ -10,9 +10,9 @@ Bar initBar(){
 
 	b.position.x = 0;
 	b.position.y = 0;
-	b.speed.x = -centeredPixelToMark(10, WINDOW_WIDTH, axisX);
+	b.speed.x = -centeredPixelToMark(DEFAULT_SPEED_BAR, WINDOW_WIDTH, axisX);
 	b.speed.y = 0;
-	b.size = centeredPixelToMark(100, WINDOW_WIDTH, axisX);
+	b.size = centeredPixelToMark(DEFAULT_WIDTH_BAR, WINDOW_WIDTH, axisX);
 	b.color.r = 1.0;
 	b.color.g = 1.0;
 	b.color.b = 1.0;
@@ -32,14 +32,17 @@ void setBarPosition(Bar *b, int x, int y) {
  */
 
 void moveBar(Bar *b, int direction) {
-	int x;
-/*printf("%f\n",b->speed.x );*/
+	float border = centeredPixelToMark(GAME_WIDTH, WINDOW_WIDTH, axisX); /* -0.5 */
 	switch (direction) {
 		case left :
-			b->position.x = b->position.x - b->speed.x ;
+			if(b->position.x - b->speed.x > border - b->size ){
+				b->position.x = b->position.x - b->speed.x ;
+			}
 			break;
 		case right :
-			b->position.x = b->position.x + b->speed.x;
+			if(b->position.x + b->speed.x < -border + b->size ){
+				b->position.x = b->position.x + b->speed.x;
+			}
 			break;
 	}
 }

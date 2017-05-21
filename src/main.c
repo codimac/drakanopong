@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
 		setBarPosition(&(player1.bar),WINDOW_WIDTH/2, MARGIN_BAR);
 
 		/* INIT PLAYER TWO */
-		Player player2 = initPlayer("Joueur 2");;
+		Player player2 = initPlayer("Joueur 2");
 		if(game.IA == 1){
 			player2.name = "THE IA \0"; /* why not */
 		}

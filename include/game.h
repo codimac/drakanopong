@@ -17,6 +17,8 @@
 	} GraphicTheme;
 
 	typedef struct Game {
+		float width;
+		float height;
 		int lvl;
 		int IA;
 		int graphicTheme;
@@ -26,5 +28,6 @@
 	void initGame(Game game);
 	Game newGame();
 	void drawGame();
+	int exitGame();
 
 #endif

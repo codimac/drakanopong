@@ -10,7 +10,7 @@ Bar initBar(){
 
 	b.position.x = 0;
 	b.position.y = 0;
-	b.speed.x = -centeredPixelToMark(2, WINDOW_WIDTH, axisX);
+	b.speed.x = -centeredPixelToMark(10, WINDOW_WIDTH, axisX);
 	b.speed.y = 0;
 	b.size = centeredPixelToMark(100, WINDOW_WIDTH, axisX);
 	b.color.r = 1.0;
@@ -46,7 +46,7 @@ void moveBar(Bar *b, int direction) {
 
 void displayBar(Bar b){
 	float y = convertPixelToMark(GAME_HEIGHT/2 - 4, GAME_HEIGHT, axisY);
-
+	glColor4f(b.color.r,b.color.g,b.color.b, b.color.alpha);
 	glPushMatrix();
 		glTranslatef(b.position.x,b.position.y, 0);
 		rectangle(b.size, y);

@@ -6,12 +6,19 @@
 	#include <GL/gl.h>
 	#include "elements.h"
 
-	static unsigned int MARGIN_BAR = 25; 
+	static unsigned int MARGIN_BAR = 25;
 
 	typedef enum Direction {
 		left, right, stop
 	} Direction;
 
+	typedef struct Bar {
+		Point position;
+		Vector speed;
+		float size;
+		Color4f color;
+	} Bar;
+	
 	Bar initBar();
 	void moveBar(Bar *b, int direction);
 	void displayBar(const Bar b);

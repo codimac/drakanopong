@@ -34,13 +34,6 @@
 		Color4f color;
 	} Ball;
 
-	typedef struct Bar {
-		Point position;
-		Vector speed;
-		float size;
-		Color4f color;
-	} Bar;
-
 	typedef struct Brick {
 		int type;
 		int display;

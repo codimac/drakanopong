@@ -37,6 +37,7 @@
 	typedef struct Brick {
 		int type;
 		int display;
+		int durability;
 		Color4f color;
 	} Brick;
 

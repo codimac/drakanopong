@@ -4,9 +4,10 @@
 	#include <stdlib.h>
 	#include <stdio.h>
 	#include <math.h>
+	#include <SDL/SDL.h>
 	#include "elements.h"
 	#include "bar.h"
-	#include <SDL/SDL.h>
+	#include "level.h"
 
 	typedef enum Hardness{
 		easy, normal, hardcore

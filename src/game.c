@@ -5,6 +5,7 @@
 #include "bar.h"
 #include "player.h"
 #include "elements.h"
+#include "level.h"
 /**
  * create a default game settings
  **/

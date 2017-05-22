@@ -12,6 +12,7 @@
 #include "player.h"
 #include "elements.h"
 #include "utils.h"
+#include "level.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -51,7 +52,7 @@ int main(int argc, char** argv) {
 		/*GAME START*/
 
 		int play = 1;
-
+		/*loadLevel(game);*/
 		/* INIT PLAYER ONE */
  		Player player1 = initPlayer("Joueur 1");
 		setBarPosition(&(player1.bar),WINDOW_WIDTH/2, MARGIN_BAR);

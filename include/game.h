@@ -20,7 +20,8 @@
 	typedef struct Game {
 		float width;
 		float height;
-		int lvl;
+		char lvl[5];
+		/*Level level;*/
 		int IA;
 		int graphicTheme;
 		int hardness;

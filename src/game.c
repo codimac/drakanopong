@@ -6,6 +6,7 @@
 #include "player.h"
 #include "elements.h"
 #include "level.h"
+
 /**
  * create a default game settings
  **/
@@ -13,7 +14,7 @@ Game newGame(){
 	Game G;
 	G.width = centeredPixelToMark(GAME_WIDTH, WINDOW_WIDTH, axisX);
 	G.height = convertPixelToMark(GAME_HEIGHT, WINDOW_HEIGHT, axisY);
-	G.lvl = 1;
+	strcpy(G.lvl, "_11");
 	G.IA = 0;
 	G.graphicTheme = dragon;
 	G.hardness = easy;

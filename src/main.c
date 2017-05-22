@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 		/*GAME START*/
 
 		int play = 1;
-		/*loadLevel(game);*/
+		loadLevel(game);
 		/* INIT PLAYER ONE */
  		Player player1 = initPlayer("Joueur 1");
 		setBarPosition(&(player1.bar),WINDOW_WIDTH/2, MARGIN_BAR);

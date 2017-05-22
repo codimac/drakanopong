@@ -7,18 +7,30 @@
 #include "elements.h"
 #include "game.h"
 
-void loadLevel(Game game){
-	int LEVEL = game.lvl + '0';
-	char lvl[3];
-	char namefile[15];
-/*	printf("%d\n", );
-	strcpy(lvl, );*/
+/*void setGameLevel(*Game game, char lvl){
 
-/*
-	strcpy(namefile, "level");
-	printf("lvl : %s \n", lvl);
-	printf("namefile : %s \n", namefile);
-	strcat(namefile, lvl);
-	printf("lvl 02 %c \n", lvl);
-	printf("namefile after%s \n", namefile);*/
+}*/
+Level initLevel(int lvl, char * filename){
+	Level L;
+	L.lvl = lvl;
+	strcpy(L.filename, filename );
+	return L;
+}
+
+void loadLevel(Game game){
+	char filename[15];
+	int lvl;
+	Level level;
+
+	strcpy(filename,"level" );
+	strcat(filename, game.lvl);
+
+	lvl = atoi(strtok(game.lvl, "_"));
+
+	printf("lvl (string) : %s \n", game.lvl);
+	printf("filename : %s \n", filename);
+	printf("lvl (int) : %d \n", lvl);
+
+	level = initLevel(lvl, filename);
+
 }

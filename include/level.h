@@ -13,7 +13,13 @@
 	typedef struct Level {
 		int lvl;
 		char filename [15];
+		int nbBrickH;
+		int nbBrickW;
 	} Level;
+
+	Level initLevel(int lvl, char * filename);
+	void loadLevel(Game game);
+
 	/*Brick brick[MAX_BRICK];*/
-	/*void loadLevel(Game game);*/
+
 #endif

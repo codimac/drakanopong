@@ -22,6 +22,12 @@ Game newGame(){
 void initGame(Game game) {
 	Player J1, J2;
 	Bar b = initBar();
-	setBarPosition(&b, 400, 550);
+	setBarPosition(&b, 400, 550);	
 	displayBar(b);
+}
+
+void animate(Ball * ball, int * direction){	
+	/*animateBallPosition(ball);*/
+	/*animateBallDirection(ball, direction);*/
+	displayBall(ball);
 }

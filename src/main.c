@@ -40,6 +40,9 @@ int main(int argc, char** argv) {
 
 		/* Create the game with default value*/
 		Game game = newGame();
+		Ball * ball = initBall();
+		setBallPosition(ball, 400, 225);
+		int direction = -1;
 
 		int loop = 1;
 		while(loop) {
@@ -50,6 +53,7 @@ int main(int argc, char** argv) {
 
 
 			initGame(game);
+			animate(ball, &direction);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

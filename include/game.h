@@ -3,6 +3,7 @@
 #include <math.h>
 #include "elements.h"
 #include "bar.h"
+#include "ball.h"
 
 typedef enum Hardness{
 	easy, normal, hardcore
@@ -21,3 +22,5 @@ typedef struct Game {
 
 void initGame(Game game);
 Game newGame();
+
+void animate(Ball * ball, int * direction);

@@ -14,7 +14,7 @@ Game newGame(){
 	Game G;
 	G.width = centeredPixelToMark(GAME_WIDTH, WINDOW_WIDTH, axisX);
 	G.height = convertPixelToMark(GAME_HEIGHT, WINDOW_HEIGHT, axisY);
-	strcpy(G.lvl, "_11");
+	G.level = initLevel();
 	G.IA = 0;
 	G.graphicTheme = dragon;
 	G.hardness = easy;

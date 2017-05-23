@@ -7,30 +7,56 @@
 #include "elements.h"
 #include "game.h"
 
-/*void setGameLevel(*Game game, char lvl){
-
-}*/
-Level initLevel(int lvl, char * filename){
-	Level L;
-	L.lvl = lvl;
-	strcpy(L.filename, filename );
-	return L;
+void setGameLevel(Level * level, char * gameLevel){
+	strcpy(level->filename,"level" );
+	strcat(level->filename, gameLevel);
+	level->lvl = strtok(gameLevel, "_");
 }
 
-void loadLevel(Game game){
-	char filename[15];
-	int lvl;
+/* Init with the default level aka number 1*/
+Level initLevel(){
+	char gameLevel[5] = "_1";
 	Level level;
+	setGameLevel(&level, gameLevel);
 
-	strcpy(filename,"level" );
-	strcat(filename, game.lvl);
+/*	printf("lvl (string) : %s \n", gameLevel);
+	printf("filename : %s \n", level.filename);
+	printf("lvl (string) : %s \n", level.lvl);
+*/
+	return level;
+}
 
-	lvl = atoi(strtok(game.lvl, "_"));
+/* Load the chosen level.
+ *
+ *
+ */
+void loadLevel(Level level) {
+	FILE * file = NULL;
+	int brick[MAX_BRICK];
+	char levelPath[20] = "./level/";
+	int i = 0, j = 0;
+	strcat(levelPath,level.filename);
+	file = fopen(levelPath,"r");
+	if(file == NULL){
+		exit(EXIT_FAILURE);
+	}
+	fscanf(file, "%d %d", &level.nbBrickX, &level.nbBrickY);
 
-	printf("lvl (string) : %s \n", game.lvl);
-	printf("filename : %s \n", filename);
-	printf("lvl (int) : %d \n", lvl);
+	level.nbBrickTotal = level.nbBrickX * level.nbBrickY;
 
-	level = initLevel(lvl, filename);
+	if(level.nbBrickTotal > MAX_BRICK) exit(EXIT_FAILURE);
 
+	for(i = 0; i < level.nbBrickTotal; i++) {
+		fscanf(file, "%d", &brick[i]);
+	}
+/*
+	for(i = 0; i < level.nbBrickY ; i++){
+		for (j; j < (level.nbBrickX) *(i+1); j++) {
+			printf(" %d ", brick[j]);
+		}
+		printf("\n");
+	}
+*/
+
+	fclose(file);
 }

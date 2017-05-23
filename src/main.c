@@ -52,7 +52,15 @@ int main(int argc, char** argv) {
 		/*GAME START*/
 
 		int play = 1;
-		loadLevel(game);
+		/*
+	****** LOAD LEVEL TEST ******
+		 */
+			loadLevel(game.level);
+		/*
+	****** LOAD LEVEL TEST END ******
+		 */
+
+
 		/* INIT PLAYER ONE */
  		Player player1 = initPlayer("Joueur 1");
 		setBarPosition(&(player1.bar),WINDOW_WIDTH/2, MARGIN_BAR);
@@ -65,6 +73,9 @@ int main(int argc, char** argv) {
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
+		/************************
+		 *    GAME MAIN LOOP    *
+		 ***********************/
 		while(play) {
 			Uint32 startTime = SDL_GetTicks();
 
@@ -74,11 +85,15 @@ int main(int argc, char** argv) {
 			glClear(GL_COLOR_BUFFER_BIT);
 			glColor3f(0.7,0.3,0.2); /* random color bonjour.*/
 
+			/* TEMPORARY GAME FRAME */
 			rectangle(game.width, game.height);
-			/*initGame(game);*/
 
+			/* Display Both Player Bar */
 			displayBar(player1.bar);
 			displayBar(player2.bar);
+
+			/* Display Bricks */
+			/* In coming */
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

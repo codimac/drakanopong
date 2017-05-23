@@ -6,20 +6,20 @@
 	#include <GL/gl.h>
 	#include "utils.h"
 	#include "elements.h"
-	#include "game.h"
 
 	static unsigned int MAX_BRICK = 100;
 
 	typedef struct Level {
-		int lvl;
+		char  * lvl;
 		char filename [15];
-		int nbBrickH;
-		int nbBrickW;
+		int nbBrickX;
+		int nbBrickY;
+		int nbBrickTotal;
 	} Level;
 
-	Level initLevel(int lvl, char * filename);
-	void loadLevel(Game game);
-
+	Level initLevel();
+	void setGameLevel(Level * level, char * gameLevel);
+	void loadLevel(Level level);
 	/*Brick brick[MAX_BRICK];*/
 
 #endif

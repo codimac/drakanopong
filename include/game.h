@@ -5,9 +5,9 @@
 	#include <stdio.h>
 	#include <math.h>
 	#include <SDL/SDL.h>
+	#include "level.h"
 	#include "elements.h"
 	#include "bar.h"
-	#include "level.h"
 
 	typedef enum Hardness{
 		easy, normal, hardcore
@@ -20,8 +20,7 @@
 	typedef struct Game {
 		float width;
 		float height;
-		char lvl[5];
-		/*Level level;*/
+		Level level;
 		int IA;
 		int graphicTheme;
 		int hardness;

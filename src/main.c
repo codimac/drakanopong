@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
 
 			/* Display Bricks */
 			/* In coming */
-
+			
 			SDL_GL_SwapBuffers();
 			/* ****** */
 

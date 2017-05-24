@@ -94,7 +94,7 @@ Gestion des points de vie
  *******************************
 
 > Changer de niveau
-	menu pour les niveaux
+	> menu pour les niveaux
 > Mettre en pause le jeu
 > Timer
 > Différentes Difficultés :
@@ -107,4 +107,7 @@ Gestion des points de vie
     > manettes seules
     > manettes + claviers
     >> assignement à un joueur
-Choisir pseudo de joueur
+> Choisir pseudo de joueur
+> Liste des meilleurs scores
+> score
+> éditeur de niveau

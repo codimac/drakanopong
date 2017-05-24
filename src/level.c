@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <GL/gl.h>
+#include <SDL/SDL_image.h>
 #include "utils.h"
 #include "level.h"
 #include "elements.h"
-#include "game.h"
 
 void setGameLevel(Level * level, char * gameLevel){
 	strcpy(level->filename,"level" );
@@ -18,15 +18,10 @@ Level initLevel(){
 	char gameLevel[5] = "_1";
 	Level level;
 	setGameLevel(&level, gameLevel);
-
-/*	printf("lvl (string) : %s \n", gameLevel);
-	printf("filename : %s \n", level.filename);
-	printf("lvl (string) : %s \n", level.lvl);
-*/
 	return level;
 }
 
-/* Load the chosen level.
+/* Load the chosen level from file
  *
  *
  */
@@ -41,22 +36,29 @@ void loadLevel(Level level) {
 		exit(EXIT_FAILURE);
 	}
 	fscanf(file, "%d %d", &level.nbBrickX, &level.nbBrickY);
-
 	level.nbBrickTotal = level.nbBrickX * level.nbBrickY;
-
 	if(level.nbBrickTotal > MAX_BRICK) exit(EXIT_FAILURE);
 
+	/* Each brick is stocked in the array */
 	for(i = 0; i < level.nbBrickTotal; i++) {
 		fscanf(file, "%d", &brick[i]);
 	}
-/*
-	for(i = 0; i < level.nbBrickY ; i++){
-		for (j; j < (level.nbBrickX) *(i+1); j++) {
-			printf(" %d ", brick[j]);
-		}
-		printf("\n");
-	}
-*/
+	displayConsole(level, brick);
+
+
+	
 
 	fclose(file);
+}
+
+/*debug function. Display the type brick in console*/
+void displayConsole(Level level, int brick[]){
+	int i = 0, j = 0;
+	printf("level : \n");
+		for(i = 0; i < level.nbBrickY ; i++){
+			for (j; j < (level.nbBrickX) *(i+1); j++) {
+				printf(" %d ", brick[j]);
+			}
+			printf("\n");
+		}
 }

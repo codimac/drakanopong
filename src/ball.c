@@ -44,13 +44,26 @@ void animateBall(Ball * b, float time){
 	b->center.x = b->center.x + b->speed.x * time;
 	b->center.y = b->center.y + b->speed.y * time;
 }
-
-int collision(Ball * b/*, Game g*/){
+/*
+int collision(Ball * b){
 	if(b->center.x <= convertCoordToMark(-(float)WINDOW_WIDTH/2, WINDOW_WIDTH) 
 		|| b->center.x >= convertCoordToMark((float)WINDOW_WIDTH/2, WINDOW_WIDTH)
 		|| b->center.y <= convertCoordToMark(-(float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)
 		|| b->center.y >= convertCoordToMark((float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)){
 		return 1;
+	}
+	return 0;
+}*/
+
+int collision(Ball * b){
+	if(b->center.x <= convertCoordToMark(-(float)WINDOW_WIDTH/2, WINDOW_WIDTH) 
+		|| b->center.x >= convertCoordToMark((float)WINDOW_WIDTH/2, WINDOW_WIDTH)){
+		return 1;
+	}
+	
+	if(b->center.y <= convertCoordToMark(-(float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)
+		|| b->center.y >= convertCoordToMark((float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)){
+		return -1;
 	}
 	return 0;
 }

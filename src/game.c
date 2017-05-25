@@ -27,9 +27,12 @@ void initGame(Game game) {
 }
 
 void animate(Ball * ball, int time){
-	if(!collision(ball/*, game*/)){
-		animateBall(ball, time);
-		/*displayBall(ball);*/
+	if(collision(ball)==1){
+		ball->speed.x = -ball->speed.x;
 	}
+	if(collision(ball)==-1){
+		ball->speed.y = -ball->speed.y;
+	}
+	animateBall(ball, time);
 	displayBall(ball);
-}	
+}

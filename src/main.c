@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
 
 		Ball * ball = initBall();
 		/*setBallPosition(ball, 400, 225);*/
-		float time= 1;
+		float time= 5;
 
 
 		/* INIT PLAYER ONE */

@@ -7,23 +7,14 @@
 	#include <SDL/SDL_image.h>
 	#include "utils.h"
 	#include "elements.h"
+	#include "brick.h"
 
 	#define MAX_BRICK 100
 	#define MAX_ROW 6
 	#define MAX_COLUMN 10
 
-	/* ENUM */
-	typedef enum TypeBrick {
-		basics, explosion,
-	}TypeBrick;
-
 	/* STRUCT */
-	typedef struct Brick {
-		int type;
-		int display;
-		int durability;
-		Color4f color;
-	} Brick;
+
 
 	typedef struct Level {
 		char  * lvl;
@@ -31,8 +22,8 @@
 		int nbBrickX;
 		int nbBrickY;
 		int nbBrickTotal;
-		int hit; /* number of hit required to destroy */
 		Brick brick[MAX_BRICK];
+		Point position;
 	} Level;
 
 	/**
@@ -42,6 +33,6 @@
 	Level initLevel();
 	void setGameLevel(Level * level, char * gameLevel);
 	void loadLevel(Level level);
-	/*Brick brick[MAX_BRICK];*/
-
+	void displayConsole(Level level);
+	void displayLevel(Level level);
 #endif

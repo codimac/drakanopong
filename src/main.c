@@ -13,6 +13,7 @@
 #include "elements.h"
 #include "utils.h"
 #include "level.h"
+#include "brick.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -94,7 +95,8 @@ int main(int argc, char** argv) {
 
 			/* Display Bricks */
 			/* In coming */
-			
+			/*displayLevel(game.level);*/
+
 			SDL_GL_SwapBuffers();
 			/* ****** */
 

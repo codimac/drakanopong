@@ -5,6 +5,7 @@
 #include "elements.h"
 #include "ball.h"
 
+
 Ball * initBall(){
 	Ball * b;
 	b = malloc(sizeof(Ball));

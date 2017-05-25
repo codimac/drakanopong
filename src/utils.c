@@ -4,6 +4,9 @@
 #include <GL/gl.h>
 #include "utils.h"
 
+#define M_PI 3.14159265358979323846264338327
+
+
 /**
  * int axis : 1 for width, -1 for height
  * int mark : WINDOW_WIDTH / WINDOW_HEIGHT / GAME_WIDTH / GAME_HEIGHT ...

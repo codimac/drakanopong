@@ -42,6 +42,9 @@ int main(int argc, char** argv) {
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
 		Game game = newGame();
+		Ball * ball = initBall();
+		/*setBallPosition(ball, 400, 225);*/
+		float time= 5;
 
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 

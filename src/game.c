@@ -26,8 +26,10 @@ void initGame(Game game) {
 	displayBar(b);
 }
 
-void animate(Ball * ball, int * direction){	
-	/*animateBallPosition(ball);*/
-	/*animateBallDirection(ball, direction);*/
+void animate(Ball * ball, int time){
+	if(!collision(ball/*, game*/)){
+		animateBall(ball, time);
+		/*displayBall(ball);*/
+	}
 	displayBall(ball);
-}
+}	

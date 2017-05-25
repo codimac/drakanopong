@@ -11,7 +11,6 @@
 	/*void moveBar(Bar b, int direction);*/
 	void displayBall(const Ball * b);
 	void setBallPosition(Ball * b, int x, int y);
-	void animateBallPosition(Ball * b);
-	void animateBallDirection(Ball * b, int * direction);
+	void animateBall(Ball * b, float time);
 
 #endif

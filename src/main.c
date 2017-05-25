@@ -37,12 +37,11 @@ int main(int argc, char** argv) {
 
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
-
 		/* Create the game with default value*/
 		Game game = newGame();
 		Ball * ball = initBall();
-		setBallPosition(ball, 400, 225);
-		int direction = -1;
+		/*setBallPosition(ball, 400, 225);*/
+		float time= 1;
 
 		int loop = 1;
 		while(loop) {
@@ -53,7 +52,7 @@ int main(int argc, char** argv) {
 
 
 			initGame(game);
-			animate(ball, &direction);
+			animate(ball, time);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

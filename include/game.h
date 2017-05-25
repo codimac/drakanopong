@@ -23,4 +23,4 @@ typedef struct Game {
 void initGame(Game game);
 Game newGame();
 
-void animate(Ball * ball, int * direction);
+void animate(Ball * ball, int time);

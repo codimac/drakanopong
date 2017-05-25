@@ -30,8 +30,8 @@
 	Game newGame();
 	void drawGame();
 	int exitGame();
-	
-	void animate(Ball * ball, int time);
+
+	void animate(Ball * ball, float time);
 
 #endif
 

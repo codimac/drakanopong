@@ -3,6 +3,7 @@
 #include <math.h>
 #include <GL/gl.h>
 #include "elements.h"
+#include "ball.h"
 
 Ball * initBall(){
 	Ball * b;
@@ -13,9 +14,9 @@ Ball * initBall(){
 	}
 
 	b->center.x = convertCoordToMark(200, WINDOW_WIDTH);
-	b->center.y = convertCoordToMark(150, WINDOW_HEIGHT);
-	b->speed.x = convertCoordToMark(1, WINDOW_WIDTH);
-	b->speed.y = convertCoordToMark(1, WINDOW_HEIGHT);
+	b->center.y = convertCoordToMark(10, WINDOW_HEIGHT);
+	b->speed.x = convertCoordToMark(20, WINDOW_WIDTH);
+	b->speed.y = convertCoordToMark(20, WINDOW_HEIGHT);
 	b->rayon = convertCoordToMark(20, WINDOW_WIDTH);
 	b->color.r = 1.0;
 	b->color.g = 1.0;

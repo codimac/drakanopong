@@ -9,8 +9,9 @@
 
 	Ball * initBall();
 	/*void moveBar(Bar b, int direction);*/
-	void displayBall(const Ball * b);
+	void displayBall(Ball * b);
 	void setBallPosition(Ball * b, int x, int y);
+	int collision(Ball * b);
 	void animateBall(Ball * b, float time);
 
 #endif

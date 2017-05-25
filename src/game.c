@@ -5,6 +5,7 @@
 #include "bar.h"
 #include "player.h"
 #include "elements.h"
+#include "ball.h"
 /**
  * create a default game settings
  **/
@@ -57,7 +58,7 @@ int exitGame(){
 	return 1;
 }
 
-void animate(Ball * ball, int time){
+void animate(Ball * ball, float time){
 	if(collision(ball)==1){
 		ball->speed.x = -ball->speed.x;
 	}

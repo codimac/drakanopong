@@ -14,8 +14,8 @@ Ball * initBall(){
 
 	b->center.x = convertCoordToMark(200, WINDOW_WIDTH);
 	b->center.y = convertCoordToMark(150, WINDOW_HEIGHT);
-	b->speed.x = convertCoordToMark(20, WINDOW_WIDTH);
-	b->speed.y = convertCoordToMark(20, WINDOW_HEIGHT);
+	b->speed.x = convertCoordToMark(1, WINDOW_WIDTH);
+	b->speed.y = convertCoordToMark(1, WINDOW_HEIGHT);
 	b->rayon = convertCoordToMark(20, WINDOW_WIDTH);
 	b->color.r = 1.0;
 	b->color.g = 1.0;
@@ -44,16 +44,7 @@ void animateBall(Ball * b, float time){
 	b->center.x = b->center.x + b->speed.x * time;
 	b->center.y = b->center.y + b->speed.y * time;
 }
-/*
-int collision(Ball * b){
-	if(b->center.x <= convertCoordToMark(-(float)WINDOW_WIDTH/2, WINDOW_WIDTH) 
-		|| b->center.x >= convertCoordToMark((float)WINDOW_WIDTH/2, WINDOW_WIDTH)
-		|| b->center.y <= convertCoordToMark(-(float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)
-		|| b->center.y >= convertCoordToMark((float)WINDOW_HEIGHT/2, WINDOW_HEIGHT)){
-		return 1;
-	}
-	return 0;
-}*/
+
 
 int collision(Ball * b){
 	if(b->center.x <= convertCoordToMark(-(float)WINDOW_WIDTH/2, WINDOW_WIDTH) 

@@ -27,7 +27,7 @@ float centeredRadiusToMark(int pixel, int mark, int axis){
 }
 
 float convertCoordToMark(float coord, int mark){
-	return (2*coord/(float)mark);
+	return ((-1+2*coord)/(float)mark);
 }
 
 

@@ -8,7 +8,7 @@
 	#include "utils.h"
 	#include "elements.h"
 
-	static unsigned int BRICK_HEIGHT = 30;
+	static unsigned int BRICK_HEIGHT = 20;
 	static unsigned int BRICK_WIDTH = 40;
 	/* ENUM */
 	typedef enum TypeBrick {
@@ -25,5 +25,5 @@
 	} Brick;
 
 	void displayBrick(Brick brick);
-	void initBrick(Brick *b);
+	void initBrick(Brick *b, float x, float y);
 #endif

@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 		/*
 	****** LOAD LEVEL TEST ******
 		 */
-			loadLevel(game.level);
+			loadLevel(&game.level);
 		/*
 	****** LOAD LEVEL TEST END ******
 		 */
@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
 
 			/* Display Bricks */
 			/* In coming */
-			/*displayLevel(game.level);*/
+			displayLevel(game.level);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

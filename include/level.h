@@ -23,7 +23,6 @@
 		int nbBrickY;
 		int nbBrickTotal;
 		Brick brick[MAX_BRICK];
-		Point position;
 	} Level;
 
 	/**
@@ -32,7 +31,7 @@
 
 	Level initLevel();
 	void setGameLevel(Level * level, char * gameLevel);
-	void loadLevel(Level level);
+	void loadLevel(Level * level);
 	void displayConsole(Level level);
 	void displayLevel(Level level);
 #endif

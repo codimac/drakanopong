@@ -25,9 +25,14 @@
 		int hardness;
 	} Game;
 
+
 	void initGame(Game game);
 	Game newGame();
 	void drawGame();
 	int exitGame();
+	
+	void animate(Ball * ball, int time);
 
 #endif
+
+

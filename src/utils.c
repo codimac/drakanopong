@@ -23,14 +23,38 @@ float centeredPixelToMark(int pixel, int mark, int axis) {
 	return axis*(-1+2* (float) pixel/mark);
 }
 
+
 /*
  * Draw a rectangle.
  */
+
+float centeredRadiusToMark(int pixel, int mark, int axis){
+	pixel = mark - pixel;
+	return axis*(-1+2* (float) pixel/mark);/**/
+}
+
+float convertCoordToMark(float coord, int mark){
+	return (2*coord/(float)mark);
+}
+
+
 void rectangle(float width, float height){
 	glBegin(GL_POLYGON);
 		glVertex2f(-width,-height);
 		glVertex2f(width,-height);
 		glVertex2f(width,height);
 		glVertex2f(-width,height);
+	glEnd();
+}
+
+
+void circle(float radius){
+	float angle;
+  /** Dessine un cercle (plein ou non) de rayon 1 et centré en (0, 0). **/
+	glBegin(GL_POLYGON);
+		/*glColor3ub(0,0,255);*/
+		for(angle = 0 ; angle < 2*M_PI; angle+= M_PI/16){
+			glVertex2f(radius*cos(angle), radius*sin(angle));
+		}
 	glEnd();
 }

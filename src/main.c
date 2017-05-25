@@ -40,9 +40,9 @@ int main(int argc, char** argv) {
 
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
-
 		/* Create the game with default value*/
 		Game game = newGame();
+
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 
 		/* MENU LOOP */
@@ -51,6 +51,11 @@ int main(int argc, char** argv) {
 		/*GAME START*/
 
 		int play = 1;
+
+		Ball * ball = initBall();
+		/*setBallPosition(ball, 400, 225);*/
+		float time= 1;
+
 
 		/* INIT PLAYER ONE */
  		Player player1 = initPlayer("Joueur 1");
@@ -78,6 +83,8 @@ int main(int argc, char** argv) {
 
 			displayBar(player1.bar);
 			displayBar(player2.bar);
+			/*initGame(game);*/
+			animate(ball, time);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

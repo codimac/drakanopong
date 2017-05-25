@@ -46,6 +46,7 @@ void animateBall(Ball * b, float time){
 }
 
 
+
 int collision(Ball * b){
 	if(b->center.x <= convertCoordToMark(-(float)WINDOW_WIDTH/2, WINDOW_WIDTH) 
 		|| b->center.x >= convertCoordToMark((float)WINDOW_WIDTH/2, WINDOW_WIDTH)){

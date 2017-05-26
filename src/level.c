@@ -43,16 +43,19 @@ void loadLevel(Level * level) {
 	/* Each brick is stocked in the array */
 	for(i = 0; i < level->nbBrickY ; i++){
 		printf("\n row %d\n", i);
+		y = convertPixelToMark( ((GAME_HEIGHT/2) - (level->nbBrickY * BRICK_HEIGHT)/2) + BRICK_HEIGHT*i , WINDOW_HEIGHT, axisY);
 		for (j; j < (level->nbBrickX) *(i+1); j++) {
-			x = convertPixelToMark(((j-(i*level->nbBrickX))*BRICK_WIDTH) + (WINDOW_WIDTH-GAME_WIDTH)/2 , WINDOW_WIDTH, axisX );
+			x = convertPixelToMark( ( (j-i*level->nbBrickX)*BRICK_WIDTH ) + (WINDOW_WIDTH-GAME_WIDTH + BRICK_WIDTH)/2 , WINDOW_WIDTH, axisX );
 			fscanf(file, "%d", &level->brick[j].type);
 			initBrick(&level->brick[j], x, y);
 			/*printf(" ------------- %d -------------\n", j);
 			printf(" type %d \n", level->brick[j].type);
 			printf("color : %.2f %.2f %.2f %.2f \n", level->brick[j].color.r, level->brick[j].color.g, level->brick[j].color.b,level->brick[j].color.alpha);
-			*/printf("%.2f %.2f | ", level->brick[j].position.x, level->brick[j].position.y);
+			*/
+			printf("%.2f %.2f | ", level->brick[j].position.x, level->brick[j].position.y);
 		}
-		y = convertPixelToMark(level->nbBrickY * BRICK_HEIGHT, WINDOW_HEIGHT, axisY);
+
+
 	}
 	displayConsole(*level);
 	fclose(file);

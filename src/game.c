@@ -59,13 +59,29 @@ int exitGame(){
 }
 
 void animate(Ball * ball, float time, Player * player1, Player * player2){
+	float y =  convertPixelToMark(GAME_HEIGHT/2 - 4, GAME_HEIGHT, axisY);
 	switch(collision(ball, player1->bar, player2->bar)){
+		
 		case 3 : {
+			ball->center.x = convertCoordToMark((float)GAME_WIDTH/2, WINDOW_WIDTH) - ball->radius;
 			ball->speed.x = -ball->speed.x;
 		}
 		break;
 
+		case -3 : {
+			ball->center.x = convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH) + ball->radius;
+			ball->speed.x = -ball->speed.x;
+		}
+		break;
+
+		case 2 :{
+			ball->center.y = player1->bar.position.y - y - ball->radius;
+			ball->speed.y = -ball->speed.y;
+		}
+		break;
+
 		case -2 :{
+			ball->center.y = player2->bar.position.y + y + ball->radius;
 			ball->speed.y = -ball->speed.y;
 		}
 		break;
@@ -93,21 +109,3 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 	animateBall(ball, time);
 	displayBall(ball);
 }
-
-/*void animate(Ball * ball, float time, Player player1, Player player2){
-	switch(collision(ball, player1.bar, player2.bar)){
-		case 1 : 
-	}
-	if(collision(ball, player1.bar, player2.bar)==1){
-		ball->speed.x = -ball->speed.x;
-	}
-	if(collision(ball, player1.bar, player2.bar)==-2){
-		ball->speed.y = -ball->speed.y;
-	}
-
-	if(collision(ball, player1.bar, player2.bar)==-1){
-		setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
-	}
-	animateBall(ball, time);
-	displayBall(ball);
-}*/

@@ -65,24 +65,29 @@ int collision(Ball * b, Bar bar1, Bar bar2){
 		x1 = - x1;
 	}
 
-	/*If collision with player1's bar (top bar), return - 2*/
+	/*If collision with player1's bar (top bar), return 2*/
 
 	if((b->center.x + b->radius) >= (bar1.position.x - x1)  && (b->center.x - b->radius) <= (bar1.position.x + x1) 
-		&& (b->center.y + b->radius) >= (bar1.position.y - y) && (b->center.y) <= (bar1.position.y + y)){
-		return -2;
+		&& (b->center.y + b->radius) >= (bar1.position.y - y) && (b->center.y - b->radius) <= (bar1.position.y + y)){
+		return 2;
 	}
 
 	/*If collision with player2's bar (bottom bar), return - 2*/
 
 	if((b->center.x + b->radius) >= (bar2.position.x - x2)  && (b->center.x - b->radius) <= (bar2.position.x + x2) 
-		&& (b->center.y - b->radius) <= (bar2.position.y + y) && (b->center.y) >= (bar2.position.y - y)){
+		&& (b->center.y - b->radius) <= (bar2.position.y + y) && (b->center.y + b->radius) >= (bar2.position.y - y)){
 		return -2;
 	}
 
-	/*If collision with the game's lateral borders, return 3*/
+	/*If collision with the game's lateral left border, return -3*/
 
-	if((b->center.x - b->radius) <= convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH) 
-		|| (b->center.x + b->radius) >= convertCoordToMark((float)GAME_WIDTH/2, WINDOW_WIDTH)){
+	if((b->center.x - b->radius) <= convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH)){
+		return -3;
+	}
+
+	/*If collision with the game's lateral right border, return 3*/
+
+	if((b->center.x + b->radius) >= convertCoordToMark((float)GAME_WIDTH/2, WINDOW_WIDTH)){
 		return 3;
 	}
 

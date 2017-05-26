@@ -30,7 +30,7 @@
 	typedef struct Ball{
 		Point center; /*position*/
 		Vector speed;
-		float rayon;
+		float radius;
 		Color4f color;
 	} Ball;
 

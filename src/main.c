@@ -44,7 +44,6 @@ int main(int argc, char** argv) {
 		Game game = newGame();
 		Ball * ball = initBall();
 		/*setBallPosition(ball, 400, 225);*/
-		float time= 5;
 
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 
@@ -84,8 +83,8 @@ int main(int argc, char** argv) {
 			displayBar(player1.bar);
 			displayBar(player2.bar);
 			/*initGame(game);*/
-			float time = 1;
-			animate(ball, time);
+			float time = 0.2;
+			animate(ball, time, player1.bar, player2.bar);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

@@ -31,7 +31,7 @@
 	void drawGame();
 	int exitGame();
 
-	void animate(Ball * ball, float time);
+	void animate(Ball * ball, float time, Bar bar1, Bar bar2);
 
 #endif
 

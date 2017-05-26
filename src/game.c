@@ -58,12 +58,16 @@ int exitGame(){
 	return 1;
 }
 
-void animate(Ball * ball, float time){
-	if(collision(ball)==1){
+void animate(Ball * ball, float time, Bar bar1, Bar bar2){
+	if(collision(ball, bar1, bar2)==1){
 		ball->speed.x = -ball->speed.x;
 	}
-	if(collision(ball)==-1){
+	if(collision(ball, bar1, bar2)==-2){
 		ball->speed.y = -ball->speed.y;
+	}
+
+	if(collision(ball, bar1, bar2)==-1){
+		setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
 	}
 	animateBall(ball, time);
 	displayBall(ball);

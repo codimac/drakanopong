@@ -46,7 +46,11 @@ void animateBall(Ball * b, float time){
 	b->center.y = b->center.y + b->speed.y * time;
 }
 
-
+/*
+ * Detect collisions between a ball and the player's bars
+ * and between the ball and the game's borders.
+ * Return int value.
+ */
 int collision(Ball * b, Bar bar1, Bar bar2){
 	float y, x2, x1;
 	x2 = bar2.size;
@@ -61,24 +65,37 @@ int collision(Ball * b, Bar bar1, Bar bar2){
 		x1 = - x1;
 	}
 
+	/*If collision with player1's bar (top bar), return - 2*/
+
 	if((b->center.x + b->radius) >= (bar1.position.x - x1)  && (b->center.x - b->radius) <= (bar1.position.x + x1) 
-		&& (b->center.y + b->radius) >= (bar1.position.y - y)){
+		&& (b->center.y + b->radius) >= (bar1.position.y - y) && (b->center.y) <= (bar1.position.y + y)){
 		return -2;
 	}
 
+	/*If collision with player2's bar (bottom bar), return - 2*/
+
 	if((b->center.x + b->radius) >= (bar2.position.x - x2)  && (b->center.x - b->radius) <= (bar2.position.x + x2) 
-		&& (b->center.y - b->radius) <= (bar2.position.y + y)){
+		&& (b->center.y - b->radius) <= (bar2.position.y + y) && (b->center.y) >= (bar2.position.y - y)){
 		return -2;
 	}
+
+	/*If collision with the game's lateral borders, return 3*/
 
 	if((b->center.x - b->radius) <= convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH) 
 		|| (b->center.x + b->radius) >= convertCoordToMark((float)GAME_WIDTH/2, WINDOW_WIDTH)){
-		return 1;
+		return 3;
 	}
 
-	if((b->center.y - b->radius) <= convertCoordToMark(-(float)GAME_HEIGHT/2, WINDOW_HEIGHT)
-		|| (b->center.y + b->radius) >= convertCoordToMark((float)GAME_HEIGHT/2, WINDOW_HEIGHT)){
+	/*If collision with the game's bottom border, return -1*/
+
+	if((b->center.y + b->radius) <= convertCoordToMark(-(float)GAME_HEIGHT/2, WINDOW_HEIGHT)){
 		return -1;
+	}
+
+	/*If collision with the game's top border, return 1*/
+
+	if((b->center.y - b->radius) >= convertCoordToMark((float)GAME_HEIGHT/2, WINDOW_HEIGHT)){
+		return 1;
 	}
 
 	return 0;

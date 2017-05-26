@@ -6,6 +6,7 @@
 	#include <math.h>
 	#include "elements.h"
 	#include "bar.h"
+	#include "player.h"
 	#include <SDL/SDL.h>
 
 	typedef enum Hardness{
@@ -31,7 +32,7 @@
 	void drawGame();
 	int exitGame();
 
-	void animate(Ball * ball, float time, Bar bar1, Bar bar2);
+	void animate(Ball * ball, float time, Player * player1, Player * player2);
 
 #endif
 

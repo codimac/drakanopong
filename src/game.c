@@ -58,17 +58,56 @@ int exitGame(){
 	return 1;
 }
 
-void animate(Ball * ball, float time, Bar bar1, Bar bar2){
-	if(collision(ball, bar1, bar2)==1){
+void animate(Ball * ball, float time, Player * player1, Player * player2){
+	switch(collision(ball, player1->bar, player2->bar)){
+		case 3 : {
+			ball->speed.x = -ball->speed.x;
+		}
+		break;
+
+		case -2 :{
+			ball->speed.y = -ball->speed.y;
+		}
+		break;
+
+		case -1 : {
+			setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
+			if (player2->lives != 0){
+				player2->lives--;
+			}
+		}
+		break;
+
+		case 1 : {
+			setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
+			if (player1->lives != 0){
+				player1->lives--;
+			}
+		}
+		break;
+
+		default :
+		break;
+	}
+
+	animateBall(ball, time);
+	displayBall(ball);
+}
+
+/*void animate(Ball * ball, float time, Player player1, Player player2){
+	switch(collision(ball, player1.bar, player2.bar)){
+		case 1 : 
+	}
+	if(collision(ball, player1.bar, player2.bar)==1){
 		ball->speed.x = -ball->speed.x;
 	}
-	if(collision(ball, bar1, bar2)==-2){
+	if(collision(ball, player1.bar, player2.bar)==-2){
 		ball->speed.y = -ball->speed.y;
 	}
 
-	if(collision(ball, bar1, bar2)==-1){
+	if(collision(ball, player1.bar, player2.bar)==-1){
 		setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
 	}
 	animateBall(ball, time);
 	displayBall(ball);
-}
+}*/

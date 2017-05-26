@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
 			displayBar(player2.bar);
 			/*initGame(game);*/
 			float time = 0.2;
-			animate(ball, time, player1.bar, player2.bar);
+			animate(ball, time, &player1, &player2);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

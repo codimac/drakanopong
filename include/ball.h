@@ -7,7 +7,7 @@
 	#include "elements.h"
 	#include "bar.h"
 
-	static unsigned int DEFAULT_XPOS_BALL = -100;
+	static unsigned int DEFAULT_XPOS_BALL = -10;
 	static unsigned int DEFAULT_YPOS_BALL = 10;
 
 

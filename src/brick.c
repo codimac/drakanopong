@@ -13,7 +13,7 @@ void initBrick(Brick *b, float x, float y){
     b->display = 1;
     b->position.x = x;
     b->position.y = y;
-    b->textureId = ID_BRICK + b->type;
+    b->textureId = b->type - 1;
     switch(b->type){
         case EMPTY:
         case HIDDEN:
@@ -37,13 +37,26 @@ void initBrick(Brick *b, float x, float y){
     }
 }
 
-void displayBrick(Brick b){
+void displayBrick(Texture t[], Brick b){
     if(b.display == 1){
-    	glColor4f(b.color.r, b.color.g, b.color.b, b.color.alpha);
     	glPushMatrix();
     		glTranslatef(b.position.x, b.position.y, 0);
-            texturedRectangle(b.textureId,centeredPixelToMark(BRICK_WIDTH, WINDOW_WIDTH, axisX), centeredPixelToMark(BRICK_HEIGHT, WINDOW_HEIGHT, axisY));
-    		rectangle(centeredPixelToMark(BRICK_WIDTH, WINDOW_WIDTH, axisX) , centeredPixelToMark(BRICK_HEIGHT, WINDOW_HEIGHT, axisY));
+            texturedRectangle(t[b.textureId].id,centeredPixelToMark(BRICK_WIDTH, WINDOW_WIDTH, axisX), centeredPixelToMark(BRICK_HEIGHT, WINDOW_HEIGHT, axisY));
     	glPopMatrix();
     }
+}
+
+void loadBrickTexture(Texture t[], int nbBrickUsed){
+    int i;
+    for(i = 0; i < nbBrickUsed; i++){
+        loadTexture(t[i]);
+    }
+
+}
+void destroyBrickTexture(Texture t[], int nbBrickUsed){
+    int i;
+    for(i = 0; i < nbBrickUsed; i++){
+        glDeleteTextures(1,t[i].id);
+    }
+
 }

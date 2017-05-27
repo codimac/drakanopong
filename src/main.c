@@ -57,7 +57,13 @@ int main(int argc, char** argv) {
 		/*
 	****** LOAD LEVEL TEST ******
 		 */
+		 	/*Texture t = {NULL, "./assets/textures/bricks/b_1.png"};
+			loadTexture(t);
+			texturedRectangle(t.id, 0.5,0.5);*/
 			loadLevel(&game.level);
+			printf("level loaded\n");
+			loadBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+
 		/*
 	****** LOAD LEVEL TEST END ******
 		 */
@@ -76,7 +82,7 @@ int main(int argc, char** argv) {
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
 
-	
+
 		/************************
 		 *    GAME MAIN LOOP    *
 		 ***********************/
@@ -98,8 +104,8 @@ int main(int argc, char** argv) {
 
 			/* Display Bricks */
 			/* In coming */
-			/*displayLevel(game.level);*/
-
+			glColor3f(0.3,0.3,0.2);
+			displayLevel(game.level);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */
@@ -122,8 +128,8 @@ int main(int argc, char** argv) {
 			}
 
 			play = exitGame();
-
-
+			/*destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+*/
 			Uint32 elapsedTime = SDL_GetTicks() - startTime;
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);

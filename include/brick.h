@@ -27,6 +27,8 @@
 		GLuint textureId;
 	} Brick;
 
-	void displayBrick(Brick brick);
+	void displayBrick(Texture t[], Brick b);
 	void initBrick(Brick *b, float x, float y);
+	void loadBrickTexture(Texture t[], int nbBrickUsed);
+	void destroyBrickTexture(Texture t[], int nbBrickUsed);
 #endif

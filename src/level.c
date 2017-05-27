@@ -56,24 +56,19 @@ void loadLevel(Level * level) {
 			fscanf(file, "%d", &level->brick[j].type);
 			initBrick(&level->brick[j], x, y);
 			if(textureUsed[level->brick[j].type - 1] == 0){
-				textureUsed[level->brick[j].type - 1] = level->brick[j].type;
-				level->brickTextureId[level->nbTypeBrickUsed].id = ID_BRICK + level->brick[j].type;
+				textureUsed[level->brick[j].type - 1] = 1;
+				sprintf(level->brickTextureId[level->nbTypeBrickUsed].path,"./assets/textures/bricks/b_%d.png", level->brick[j].type);
 				level->nbTypeBrickUsed++;
 			}
 		}
 	}
-	for(i=0; i<NB_TYPE_BRICK; i++) {
-		printf("%d\n", textureUsed[i]);
-	}
-	printf("level->nbTypeBrickUsed : %d\n", level->nbTypeBrickUsed);
-	/*sprintf(level->brickTextureId[].path,"../assets/bricks/b_%d", level->brick[j].type);*/
 	displayConsole(*level);
 	fclose(file);
 }
 void displayLevel(Level level){
-	int i = 0, j = 0;
+	int i = 0;
 		for(i = 0; i < level.nbBrickTotal ; i++){
-			displayBrick(level.brick[i]);
+			displayBrick(level.brickTextureId,level.brick[i]);
 		}
 }
 

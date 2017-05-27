@@ -16,11 +16,11 @@
 
 	typedef struct Texture{
 		GLuint id;
-		char path[50];
+		char path[100];
 	} Texture;
 
 	#define TEXTURE(id) (Texture){ 0 }
 
-	void loadTexture(Texture *t);
+	void loadTexture(Texture t);
 	void texturedRectangle(GLuint textureId,float x, float y);
 #endif

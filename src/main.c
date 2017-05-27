@@ -57,11 +57,8 @@ int main(int argc, char** argv) {
 		/*
 	****** LOAD LEVEL TEST ******
 		 */
-		 	/*Texture t = {NULL, "./assets/textures/bricks/b_1.png"};
-			loadTexture(t);
-			texturedRectangle(t.id, 0.5,0.5);*/
 			loadLevel(&game.level);
-			printf("level loaded\n");
+			printf("level loaded\n\n");
 			loadBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 
 		/*

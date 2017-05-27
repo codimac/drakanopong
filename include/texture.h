@@ -21,6 +21,6 @@
 
 	#define TEXTURE(id) (Texture){ 0 }
 
-	void loadTexture(Texture t);
+	void loadTexture(Texture *t);
 	void texturedRectangle(GLuint textureId,float x, float y);
 #endif

@@ -46,10 +46,10 @@ void displayBrick(Texture t[], Brick b){
     }
 }
 
-void loadBrickTexture(Texture t[], int nbBrickUsed){
+void loadBrickTexture(Texture *t, int nbBrickUsed){
     int i;
     for(i = 0; i < nbBrickUsed; i++){
-        loadTexture(t[i]);
+        loadTexture(&t[i]);
     }
 
 }

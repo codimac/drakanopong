@@ -19,7 +19,7 @@ void loadTexture(Texture *t){
 		exit(EXIT_FAILURE);
 	}
 	GLenum format;
-	printf("img->format->BytesPerPixel : %d\n", img->format->BytesPerPixel );
+	/*printf("img->format->BytesPerPixel : %d\n", img->format->BytesPerPixel );*/
 	if(img != NULL){
 	    switch(img->format->BytesPerPixel) {
 	    	case 1:

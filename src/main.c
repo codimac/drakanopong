@@ -57,14 +57,13 @@ int main(int argc, char** argv) {
 
 		int play = 1;
 		/*
-	****** LOAD LEVEL TEST ******
+	****** LOAD LEVEL ******
 		 */
 			loadLevel(&game.level);
-			printf("level loaded\n\n");
 			loadBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 
 		/*
-	****** LOAD LEVEL TEST END ******
+	****** LOAD LEVEL END ******
 		 */
 
 
@@ -132,8 +131,7 @@ int main(int argc, char** argv) {
 			}
 
 			play = exitGame();
-			/*destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
-*/
+
 			Uint32 elapsedTime = SDL_GetTicks() - startTime;
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
@@ -141,6 +139,6 @@ int main(int argc, char** argv) {
 		}
 
 		SDL_Quit();
-
+		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 		return EXIT_SUCCESS;
 }

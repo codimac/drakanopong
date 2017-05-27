@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 #include <GL/gl.h>
 #include <SDL/SDL_image.h>
@@ -8,11 +9,6 @@
 #include "elements.h"
 #include "brick.h"
 
-void setGameLevel(Level * level, char * gameLevel){
-	strcpy(level->filename,"level" );
-	strcat(level->filename, gameLevel);
-	level->lvl = strtok(gameLevel, "_");
-}
 
 /* Init with the default level aka number 1*/
 Level initLevel(){
@@ -22,41 +18,55 @@ Level initLevel(){
 	return level;
 }
 
-/* Load the chosen level from file
- *
- *
+/*
+ * Change the game level
+ */
+void setGameLevel(Level * level, char * gameLevel){
+	strcpy(level->filename,"level" );
+	strcat(level->filename, gameLevel);
+	level->lvl = strtok(gameLevel, "_");
+}
+
+/*
+ * Load the chosen level from file
  */
 void loadLevel(Level * level) {
 	FILE * file = NULL;
 	char levelPath[20] = "./level/";
-	int i = 0, j = 0;
+	int i = 0, j = 0, textureIndice = 0, textureUsed[NB_TYPE_BRICK];
 	float x = -1, y = level->nbBrickY * BRICK_HEIGHT;
+	level->nbTypeBrickUsed = 0;
 	strcat(levelPath,level->filename);
+
 	file = fopen(levelPath,"r");
-	if(file == NULL){
-		exit(EXIT_FAILURE);
-	}
+	if(file == NULL) exit(EXIT_FAILURE);
+
 	fscanf(file, "%d %d", &level->nbBrickX, &level->nbBrickY);
 	level->nbBrickTotal = level->nbBrickX * level->nbBrickY;
-	if(level->nbBrickTotal > MAX_BRICK) exit(EXIT_FAILURE);
 
+	if(level->nbBrickTotal > MAX_BRICK) exit(EXIT_FAILURE);
+	for(i=0; i<NB_TYPE_BRICK; i++) {
+		textureUsed[i] = 0;
+	}
 	/* Each brick is stocked in the array */
 	for(i = 0; i < level->nbBrickY ; i++){
-		printf("\n row %d\n", i);
 		y = convertPixelToMark( ((GAME_HEIGHT/2) - (level->nbBrickY * BRICK_HEIGHT)/2) + BRICK_HEIGHT*i , WINDOW_HEIGHT, axisY);
 		for (j; j < (level->nbBrickX) *(i+1); j++) {
 			x = convertPixelToMark( ( (j-i*level->nbBrickX)*BRICK_WIDTH ) + (WINDOW_WIDTH-GAME_WIDTH + BRICK_WIDTH)/2 , WINDOW_WIDTH, axisX );
 			fscanf(file, "%d", &level->brick[j].type);
 			initBrick(&level->brick[j], x, y);
-			/*printf(" ------------- %d -------------\n", j);
-			printf(" type %d \n", level->brick[j].type);
-			printf("color : %.2f %.2f %.2f %.2f \n", level->brick[j].color.r, level->brick[j].color.g, level->brick[j].color.b,level->brick[j].color.alpha);
-			*/
-			printf("%.2f %.2f | ", level->brick[j].position.x, level->brick[j].position.y);
+			if(textureUsed[level->brick[j].type - 1] == 0){
+				textureUsed[level->brick[j].type - 1] = level->brick[j].type;
+				level->brickTextureId[level->nbTypeBrickUsed].id = ID_BRICK + level->brick[j].type;
+				level->nbTypeBrickUsed++;
+			}
 		}
-
-
 	}
+	for(i=0; i<NB_TYPE_BRICK; i++) {
+		printf("%d\n", textureUsed[i]);
+	}
+	printf("level->nbTypeBrickUsed : %d\n", level->nbTypeBrickUsed);
+	/*sprintf(level->brickTextureId[].path,"../assets/bricks/b_%d", level->brick[j].type);*/
 	displayConsole(*level);
 	fclose(file);
 }

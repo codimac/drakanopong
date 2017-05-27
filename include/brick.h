@@ -2,11 +2,14 @@
 #define _BRICK
 	#include <stdlib.h>
 	#include <stdio.h>
-	#include <math.h>
+	#include <string.h>
 	#include <GL/gl.h>
 	#include <SDL/SDL_image.h>
 	#include "utils.h"
 	#include "elements.h"
+	#include "texture.h"
+
+	#define NB_TYPE_BRICK 6
 
 	static unsigned int BRICK_HEIGHT = 20;
 	static unsigned int BRICK_WIDTH = 40;
@@ -20,8 +23,8 @@
 		int type;
 		int display;
 		int durability;
-		Color4f color;
 		Point position;
+		GLuint textureId;
 	} Brick;
 
 	void displayBrick(Brick brick);

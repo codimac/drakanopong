@@ -14,6 +14,7 @@
 #include "utils.h"
 #include "level.h"
 #include "brick.h"
+#include "texture.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -74,6 +75,8 @@ int main(int argc, char** argv) {
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
+
+	
 		/************************
 		 *    GAME MAIN LOOP    *
 		 ***********************/
@@ -95,7 +98,8 @@ int main(int argc, char** argv) {
 
 			/* Display Bricks */
 			/* In coming */
-			displayLevel(game.level);
+			/*displayLevel(game.level);*/
+
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

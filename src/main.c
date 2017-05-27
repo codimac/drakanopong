@@ -12,6 +12,7 @@
 #include "player.h"
 #include "elements.h"
 #include "utils.h"
+#include "heart.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -65,6 +66,17 @@ int main(int argc, char** argv) {
 		if(game.IA == 1){
 			player2.name = "THE IA \0"; /* why not */
 		}
+
+		/*INIT PLAYER ONE'S HEARTS*/
+		Heart * heart1 = initPlayerHearts(player1);
+		setPlayerHearts(heart1, player1, WINDOW_WIDTH/2 - DEFAULT_XPOS_HEART, WINDOW_HEIGHT/2 - DEFAULT_YPOS_HEART);
+
+		/*INIT PLAYER TWO'S HEARTS*/
+		Heart * heart2 = initPlayerHearts(player2);
+		setPlayerHearts(heart2, player2, DEFAULT_XPOS_HEART - WINDOW_WIDTH/2, DEFAULT_YPOS_HEART - WINDOW_HEIGHT/2);
+		Heart h3 = heart1[4];
+		Heart h4 = heart2[4];
+
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
@@ -85,6 +97,12 @@ int main(int argc, char** argv) {
 			/*initGame(game);*/
 			float time = 0.2;
 			animate(ball, time, &player1, &player2);
+
+			/*DISPLAY LIVES*/
+			displayHeart(h3);
+			displayHeart(h4);
+			/*displayPlayerHearts(heart1, player1, DEFAULT_MARGIN_HEART);
+			displayPlayerHearts(heart2, player2, DEFAULT_MARGIN_HEART);*/
 
 			SDL_GL_SwapBuffers();
 			/* ****** */

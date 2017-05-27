@@ -1,8 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 #include <GL/gl.h>
 #include <SDL/SDL_image.h>
+#include <SDL/SDL.h>
+
+#include <GL/glut.h>
+#include <GL/glu.h>
+
 #include "texture.h"
 
 void loadTexture(Texture *t){
@@ -14,10 +19,11 @@ void loadTexture(Texture *t){
 		exit(EXIT_FAILURE);
 	}
 	GLenum format;
+	printf("img->format->BytesPerPixel : %d\n", img->format->BytesPerPixel );
 	if(img != NULL){
 	    switch(img->format->BytesPerPixel) {
 	    	case 1:
-	      		format = GL_RED;
+	      		format = GL_ALPHA;
 	      	break;
 	      	case 3:
 	      		format = GL_RGB;
@@ -32,18 +38,20 @@ void loadTexture(Texture *t){
 	}
 
 	glBindTexture(GL_TEXTURE_2D,t->id);
+	glTexImage2D( GL_TEXTURE_2D,0, format, img->w, img->h, 0, format, GL_UNSIGNED_BYTE, img->pixels);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexImage2D( GL_TEXTURE_2D,0, GL_RGBA, img->w, img->h, 0, format, GL_UNSIGNED_BYTE, img->pixels);
 	SDL_FreeSurface(img);
-	printf("t id : %d\n",t->id );
+	glBindTexture(GL_TEXTURE_2D,0);
 }
 
 void texturedRectangle(GLuint textureId,float x, float y){
+	glColor3f(1.,1.,1.);
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	glBindTexture(GL_TEXTURE_2D, textureId);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 
 	glBegin(GL_QUADS);
 		glTexCoord2f(0,1);

@@ -112,22 +112,13 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 	displayBall(ball);
 }
 
-/*
-	void displayPlayerHearts(Heart * h, Player player, float margin){
+
+	void displayPlayerHearts(Heart * h, Player player/*, float margin*/){
 		int i;
 		for (i=0; i < player.lives; i++){
-
-			/*if (i != 0){
-
-				/*if (margin < 0){
-
-					h[i].position.x = h[i-1].position.x - h[i-1].width;
-				}
-				else*/ /*h[i].position.x = h[i-1].position.x + h[i-1].width + 100;
-			}*/
-			/*(&(h[i]))->position.y += 100;
+			displayHeart(h[i]);
 		}
-	}*/
+	}
 
 	Heart * initPlayerHearts(Player player){
 		int i;
@@ -140,13 +131,15 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		return h;
 	}
 
-	void setPlayerHearts(Heart * h, Player player, int x, int y){
+	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin){
 		int i;
 		for (i=0; i < player.lives; i++){
-			setHeartPosition(&h[i], x, y);
+			if (margin < 0){
+				setHeartPosition(&h[i], x - DEFAULT_WIDTH_HEART*i + (i+1)*margin, y);
+			}
+			else setHeartPosition(&h[i], x + DEFAULT_WIDTH_HEART*i + (i+1)*margin, y);
 		}
 	}
-
 
 
 	/*

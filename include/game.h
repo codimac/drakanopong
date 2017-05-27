@@ -4,10 +4,11 @@
 	#include <stdlib.h>
 	#include <stdio.h>
 	#include <math.h>
+	#include <SDL/SDL.h>
+	#include "level.h"
 	#include "elements.h"
 	#include "bar.h"
 	#include "player.h"
-	#include <SDL/SDL.h>
 
 	typedef enum Hardness{
 		easy, normal, hardcore
@@ -20,7 +21,7 @@
 	typedef struct Game {
 		float width;
 		float height;
-		int lvl;
+		Level level;
 		int IA;
 		int graphicTheme;
 		int hardness;
@@ -35,5 +36,3 @@
 	void animate(Ball * ball, float time, Player * player1, Player * player2);
 
 #endif
-
-

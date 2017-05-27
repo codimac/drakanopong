@@ -12,6 +12,9 @@
 #include "player.h"
 #include "elements.h"
 #include "utils.h"
+#include "level.h"
+#include "brick.h"
+#include "texture.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -53,6 +56,17 @@ int main(int argc, char** argv) {
 		/*GAME START*/
 
 		int play = 1;
+		/*
+	****** LOAD LEVEL TEST ******
+		 */
+			loadLevel(&game.level);
+			printf("level loaded\n\n");
+			loadBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+
+		/*
+	****** LOAD LEVEL TEST END ******
+		 */
+
 
 
 
@@ -68,6 +82,11 @@ int main(int argc, char** argv) {
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
+
+
+		/************************
+		 *    GAME MAIN LOOP    *
+		 ***********************/
 		while(play) {
 			Uint32 startTime = SDL_GetTicks();
 
@@ -77,14 +96,20 @@ int main(int argc, char** argv) {
 			glClear(GL_COLOR_BUFFER_BIT);
 			glColor3f(0.7,0.3,0.2); /* random color bonjour.*/
 
+			/* TEMPORARY GAME FRAME */
 			rectangle(game.width, game.height);
-			/*initGame(game);*/
 
+			/* Display Both Player Bar */
 			displayBar(player1.bar);
 			displayBar(player2.bar);
 			/*initGame(game);*/
 			float time = 0.2;
 			animate(ball, time, &player1, &player2);
+
+			/* Display Bricks */
+			/* In coming */
+			glColor3f(0.3,0.3,0.2);
+			displayLevel(game.level);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */
@@ -107,8 +132,8 @@ int main(int argc, char** argv) {
 			}
 
 			play = exitGame();
-
-
+			/*destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+*/
 			Uint32 elapsedTime = SDL_GetTicks() - startTime;
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);

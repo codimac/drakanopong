@@ -34,17 +34,6 @@
 		Color4f color;
 	} Ball;
 
-	typedef struct Brick {
-		int type;
-		int display;
-		Color4f color;
-	} Brick;
-
-	/* ENUM */
-	typedef enum TypeBrick {
-		basics, explosion
-	}TypeBrick;
-
 
 	/**
 	 * FUNCTIONS

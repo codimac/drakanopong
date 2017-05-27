@@ -6,6 +6,8 @@
 #include "player.h"
 #include "elements.h"
 #include "ball.h"
+#include "level.h"
+
 /**
  * create a default game settings
  **/
@@ -13,7 +15,7 @@ Game newGame(){
 	Game G;
 	G.width = centeredPixelToMark(GAME_WIDTH, WINDOW_WIDTH, axisX);
 	G.height = convertPixelToMark(GAME_HEIGHT, WINDOW_HEIGHT, axisY);
-	G.lvl = 1;
+	G.level = initLevel();
 	G.IA = 0;
 	G.graphicTheme = dragon;
 	G.hardness = easy;
@@ -27,7 +29,7 @@ Game newGame(){
 void initGame(Game game) {
 	Player J1, J2;
 	Bar b = initBar();
-	setBarPosition(&b, 400, 550);	
+	setBarPosition(&b, 400, 550);
 	displayBar(b);
 }
 
@@ -61,7 +63,7 @@ int exitGame(){
 void animate(Ball * ball, float time, Player * player1, Player * player2){
 	float y =  convertPixelToMark(GAME_HEIGHT/2 - 4, GAME_HEIGHT, axisY);
 	switch(collision(ball, player1->bar, player2->bar)){
-		
+
 		case 3 : {
 			ball->center.x = convertCoordToMark((float)GAME_WIDTH/2, WINDOW_WIDTH) - ball->radius;
 			ball->speed.x = -ball->speed.x;

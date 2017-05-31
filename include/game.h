@@ -36,7 +36,7 @@
 	int exitGame();
 
 	void animate(Ball * ball, float time, Player * player1, Player * player2);
-	void displayPlayerHearts(Heart * h, Player player/*, float margin*/);
+	void displayPlayerHearts(Heart * h, Player player, Texture texture);
 	Heart * initPlayerHearts(Player player);
 	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin, int side);
 

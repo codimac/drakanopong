@@ -113,10 +113,10 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 }
 
 
-	void displayPlayerHearts(Heart * h, Player player){
+	void displayPlayerHearts(Heart * h, Player player, Texture texture){
 		int i;
 		for (i=0; i < player.lives; i++){
-			displayHeart(h[i]);
+			displayHeart(h[i], texture);
 		}
 	}
 
@@ -135,16 +135,16 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 
 	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin, int side){
 		int i,j;
-		int nb_columns = (WINDOW_WIDTH - GAME_WIDTH - 2*margin) / ((DEFAULT_WIDTH_HEART + margin)*2);
+		int nb_columns = (WINDOW_WIDTH - GAME_WIDTH  - 2*margin) / ((DEFAULT_WIDTH_HEART + margin)*2);
 		int nb_rows = player.lives / nb_columns;
 		int rest = player.lives % nb_columns;
 		margin = margin * side;
-		
+
 		for(i = 0; i < nb_rows; i++){
 			for (j = 0; j < nb_columns; j++){
 					setHeartPosition(&h[i*nb_columns+j], (x + side*DEFAULT_WIDTH_HEART*j + (j+1)*margin), y);
 			}
-			y += margin + side*DEFAULT_HEIGHT_HEART;
+			y += margin + side * DEFAULT_HEIGHT_HEART;
 		}
 
 		if (rest != 0){

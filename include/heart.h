@@ -11,6 +11,8 @@
 	static unsigned int DEFAULT_XPOS_HEART = 20;
 	static unsigned int DEFAULT_YPOS_HEART = 20;
 	static unsigned int DEFAULT_MARGIN_HEART = 10;
+	static unsigned int DEFAULT_MAX_LIVES = 10;
+	static unsigned int DEFAULT_HEARTS = 5;
 
 	typedef struct Heart {
 		Point position;

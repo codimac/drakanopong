@@ -32,5 +32,3 @@
 			rectangle(h.width, h.height);
 		glPopMatrix();
 	}
-
-

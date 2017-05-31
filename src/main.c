@@ -82,11 +82,11 @@ int main(int argc, char** argv) {
 
 		/*INIT PLAYER ONE'S HEARTS*/
 		Heart * heart1 = initPlayerHearts(player1);
-		setPlayerHearts(heart1, player1, WINDOW_WIDTH/2 - DEFAULT_XPOS_HEART, WINDOW_HEIGHT/2 - DEFAULT_YPOS_HEART, - DEFAULT_MARGIN_HEART);
+		setPlayerHearts(heart1, player1, WINDOW_WIDTH/2 - DEFAULT_XPOS_HEART, WINDOW_HEIGHT/2 - DEFAULT_YPOS_HEART, DEFAULT_MARGIN_HEART, -1);
 
 		/*INIT PLAYER TWO'S HEARTS*/
 		Heart * heart2 = initPlayerHearts(player2);
-		setPlayerHearts(heart2, player2, DEFAULT_XPOS_HEART - WINDOW_WIDTH/2, DEFAULT_YPOS_HEART - WINDOW_HEIGHT/2, DEFAULT_MARGIN_HEART);
+		setPlayerHearts(heart2, player2, DEFAULT_XPOS_HEART - WINDOW_WIDTH/2, DEFAULT_YPOS_HEART - WINDOW_HEIGHT/2, DEFAULT_MARGIN_HEART, 1);
 		Heart h3 = heart1[4];
 		Heart h4 = heart2[4];
 
@@ -122,8 +122,6 @@ int main(int argc, char** argv) {
 			glColor3f(0.3,0.3,0.2);
 			displayLevel(game.level);
 			/*DISPLAY LIVES*/
-			/*displayHeart(h3);
-			displayHeart(h4);*/
 			displayPlayerHearts(heart1, player1);
 			displayPlayerHearts(heart2, player2);
 

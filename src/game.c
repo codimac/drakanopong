@@ -113,7 +113,7 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 }
 
 
-	void displayPlayerHearts(Heart * h, Player player/*, float margin*/){
+	void displayPlayerHearts(Heart * h, Player player){
 		int i;
 		for (i=0; i < player.lives; i++){
 			displayHeart(h[i]);
@@ -131,18 +131,26 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		return h;
 	}
 
-	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin){
-		int i;
-		for (i=0; i < player.lives; i++){
-			if (margin < 0){
-				setHeartPosition(&h[i], x - DEFAULT_WIDTH_HEART*i + (i+1)*margin, y);
+	/*side = 1 for left, -1 for right*/
+
+	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin, int side){
+		int i,j;
+		int nb_columns = (WINDOW_WIDTH - GAME_WIDTH - 2*margin) / ((DEFAULT_WIDTH_HEART + margin)*2);
+		int nb_rows = player.lives / nb_columns;
+		int rest = player.lives % nb_columns;
+		margin = margin * side;
+		
+		for(i = 0; i < nb_rows; i++){
+			for (j = 0; j < nb_columns; j++){
+					setHeartPosition(&h[i*nb_columns+j], (x + side*DEFAULT_WIDTH_HEART*j + (j+1)*margin), y);
 			}
-			else setHeartPosition(&h[i], x + DEFAULT_WIDTH_HEART*i + (i+1)*margin, y);
+			y += margin + side*DEFAULT_HEIGHT_HEART;
+		}
+
+		if (rest != 0){
+			i = nb_rows;
+			for (j = 0; j < rest; j++){
+					setHeartPosition(&h[i*nb_columns+j], x + side * DEFAULT_WIDTH_HEART*j + (j+1)*margin, y);
+			}
 		}
 	}
-
-
-	/*
-	void addHeart();
-	void deleteheart();
-	void freeHearts()*/

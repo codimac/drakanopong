@@ -15,6 +15,7 @@
 #include "level.h"
 #include "brick.h"
 #include "texture.h"
+#include "heart.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -67,8 +68,6 @@ int main(int argc, char** argv) {
 		 */
 
 
-
-
 		/* INIT PLAYER ONE */
  		Player player1 = initPlayer("Joueur 1");
 		setBarPosition(&(player1.bar),WINDOW_WIDTH/2, MARGIN_BAR);
@@ -78,6 +77,24 @@ int main(int argc, char** argv) {
 		if(game.IA == 1){
 			player2.name = "THE IA \0"; /* why not */
 		}
+
+		/*INIT PLAYER ONE'S HEARTS*/
+		Heart * heart1 = initPlayerHearts(player1);
+		setPlayerHearts(heart1, player1, WINDOW_WIDTH/2 - DEFAULT_XPOS_HEART, WINDOW_HEIGHT/2 - DEFAULT_YPOS_HEART, DEFAULT_MARGIN_HEART, -1);
+
+		/*INIT PLAYER TWO'S HEARTS*/
+		Heart * heart2 = initPlayerHearts(player2);
+		setPlayerHearts(heart2, player2, DEFAULT_XPOS_HEART - WINDOW_WIDTH/2, DEFAULT_YPOS_HEART - WINDOW_HEIGHT/2, DEFAULT_MARGIN_HEART, 1);
+
+		/*LOAD HEARTS TEXTURE*/
+		Texture t_heart1;
+		Texture t_heart2;
+		t_heart1 = initTextureHeart("./assets/textures/hearts/h_1.png");
+		t_heart2 = initTextureHeart("./assets/textures/hearts/h_2.png");
+		loadTexture(&t_heart1);
+		loadTexture(&t_heart2);
+		
+
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
@@ -109,6 +126,9 @@ int main(int argc, char** argv) {
 			/* In coming */
 			glColor3f(0.3,0.3,0.2);
 			displayLevel(game.level);
+			/*DISPLAY LIVES*/
+			displayPlayerHearts(heart1, player1, t_heart1);
+			displayPlayerHearts(heart2, player2, t_heart2);
 
 			SDL_GL_SwapBuffers();
 			/* ****** */
@@ -140,5 +160,7 @@ int main(int argc, char** argv) {
 
 		SDL_Quit();
 		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+		glDeleteTextures(1, t_heart1.id);
+		glDeleteTextures(1, t_heart2.id);
 		return EXIT_SUCCESS;
 }

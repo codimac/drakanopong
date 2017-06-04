@@ -154,3 +154,14 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 			}
 		}
 	}
+
+	void hideBricks(Ball * ball, Level level){
+		if(brickArea(*ball, level)){
+			ball->color.g = 0;
+			ball->color.b = 0;
+		}
+		else {
+			ball->color.g = 1.0;
+			ball->color.b = 1.0;
+		}
+	}

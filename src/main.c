@@ -46,8 +46,13 @@ int main(int argc, char** argv) {
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
 		Game game = newGame();
-		Ball * ball = initBall();
-		/*setBallPosition(ball, 400, 225);*/
+
+		/*INIT BALLS*/
+		Ball * ball1 = initBall();
+		Ball * ball2 = initBall();
+		setBallPosition(ball1, -100, -100);
+		setBallPosition(ball2, -300, -600);
+		setBallDirection(ball2, -20, -20);
 
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 
@@ -120,7 +125,9 @@ int main(int argc, char** argv) {
 			displayBar(player2.bar);
 			/*initGame(game);*/
 			float time = 0.2;
-			animate(ball, time, &player1, &player2);
+			animate(ball1, time, &player1, &player2);
+			animate(ball2, time, &player1, &player2);
+			hideBricks(ball1, game.level);
 
 			/* Display Bricks */
 			/* In coming */

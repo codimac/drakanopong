@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 #include "elements.h"
 #include "ball.h"
+#include "level.h"
 
 Ball * initBall(){
 	Ball * b;
@@ -30,7 +31,7 @@ void displayBall(Ball * b){
 
 	glPushMatrix();
 		glTranslatef(b->center.x, b->center.y, 0);
-		circle(b->radius);/**/
+		circle(b->radius, b->color);
 	glPopMatrix();
 }
 
@@ -39,6 +40,10 @@ void setBallPosition(Ball * b, int x, int y) {
 	b->center.y = convertCoordToMark(y, WINDOW_HEIGHT);
 }
 
+void setBallDirection(Ball * b, int x, int y) {
+	b->speed.x = convertCoordToMark(x, WINDOW_WIDTH);
+	b->speed.y = convertCoordToMark(y, WINDOW_HEIGHT);
+}
 
 void animateBall(Ball * b, float time){
 
@@ -104,4 +109,18 @@ int collision(Ball * b, Bar bar1, Bar bar2){
 	}
 
 	return 0;
+}
+
+int brickArea(Ball b, Level level){
+	float hBrick = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT);
+	if(b.center.y - b.radius <= level.nbBrickY/2 * hBrick && b.center.y + b.radius >= - level.nbBrickY/2 * hBrick){
+		return 1;
+	}
+	return 0;
+}
+
+int ballArea(Ball b, Level level){
+	float * ball_span = [b.center.x - radius, b.center.x + radius, b.center.y - radius, b.center.y + radius];
+	float ball_proportionY = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT) / (b.radius*2);
+	float ball_proportionX = convertCoordToMark(BRICK_WIDTH, WINDOW_WIDTH) / (b.radius*2);
 }

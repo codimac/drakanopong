@@ -48,11 +48,11 @@ void rectangle(float width, float height){
 }
 
 
-void circle(float radius){
+void circle(float radius, Color4f color){
 	float angle;
   /** Dessine un cercle (plein ou non) de rayon 1 et centré en (0, 0). **/
 	glBegin(GL_POLYGON);
-		/*glColor3ub(0,0,255);*/
+		glColor3ub(color.r*255, color.g*255, color.b*255);
 		for(angle = 0 ; angle < 2*M_PI; angle+= M_PI/16){
 			glVertex2f(radius*cos(angle), radius*sin(angle));
 		}

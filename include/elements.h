@@ -5,7 +5,7 @@
 	#include <stdio.h>
 	#include <math.h>
 	#include <GL/gl.h>
-	#include "utils.h"
+	/*#include "utils.h"*/
 
 	static unsigned int WINDOW_WIDTH = 800;
 	static unsigned int WINDOW_HEIGHT = 600;
@@ -33,7 +33,6 @@
 		float radius;
 		Color4f color;
 	} Ball;
-
 
 	/**
 	 * FUNCTIONS

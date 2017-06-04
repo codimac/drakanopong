@@ -120,7 +120,8 @@ int brickArea(Ball b, Level level){
 }
 
 int ballArea(Ball b, Level level){
-	float * ball_span = [b.center.x - radius, b.center.x + radius, b.center.y - radius, b.center.y + radius];
+	float ball_span[4] = {b.center.x - b.radius, b.center.x + b.radius, b.center.y - b.radius, b.center.y + b.radius};
 	float ball_proportionY = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT) / (b.radius*2);
 	float ball_proportionX = convertCoordToMark(BRICK_WIDTH, WINDOW_WIDTH) / (b.radius*2);
+	return 0;
 }

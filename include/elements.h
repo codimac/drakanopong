@@ -32,6 +32,7 @@
 		Vector speed;
 		float radius;
 		Color4f color;
+		int lastBar;
 	} Ball;
 
 	/**

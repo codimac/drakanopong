@@ -79,17 +79,21 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		case 2 :{
 			ball->center.y = player1->bar.position.y - y - ball->radius;
 			ball->speed.y = -ball->speed.y;
+			ball->lastBar = 1;
 		}
 		break;
 
 		case -2 :{
 			ball->center.y = player2->bar.position.y + y + ball->radius;
 			ball->speed.y = -ball->speed.y;
+			ball->lastBar = 2;
 		}
 		break;
 
 		case -1 : {
-			setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
+			ball->lastBar = 0;
+			setBallPosition(ball, -DEFAULT_XPOS_BALL, -DEFAULT_YPOS_BALL);
+			setBallDirection(ball, -DEFAULT_XDIR_BALL, -DEFAULT_YDIR_BALL);
 			if (player2->lives != 0){
 				player2->lives--;
 			}
@@ -97,14 +101,16 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		break;
 
 		case 1 : {
+			ball->lastBar = 0;
 			setBallPosition(ball, DEFAULT_XPOS_BALL, DEFAULT_YPOS_BALL);
+			setBallDirection(ball, DEFAULT_XDIR_BALL, DEFAULT_YDIR_BALL);
 			if (player1->lives != 0){
 				player1->lives--;
 			}
 		}
 		break;
 
-		default :
+		default :;
 		break;
 	}
 
@@ -155,10 +161,33 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		}
 	}
 
-	void hideBricks(Ball * ball, Level level){
-		if(brickArea(*ball, level)){
+	void hideBricks(Ball * ball, Level * level, Player * player1, Player * player2){
+		int k = brickIndex(*ball, *level);
+		float hBrick = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT);
+
+		if(brickArea(*ball, *level)){
 			ball->color.g = 0;
 			ball->color.b = 0;
+			switch(collisionBrick(*ball, *level, k)){
+				case 0 :;
+				break;
+				case 1 : {
+					level->brick[k].display = 0;
+					ball->center.y = level->brick[k].position.y + hBrick + ball->radius;
+					ball->speed.y = -ball->speed.y;
+					player1->score += 1;
+
+				}
+				break;
+				case 2 : {
+					level->brick[k].display = 0;
+					ball->center.y = level->brick[k].position.y - hBrick - ball->radius;
+					ball->speed.y = -ball->speed.y;
+					player2->score += 1;
+				}
+				break;
+				default :;
+			}
 		}
 		else {
 			ball->color.g = 1.0;

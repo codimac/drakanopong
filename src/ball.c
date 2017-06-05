@@ -16,13 +16,14 @@ Ball * initBall(){
 
 	b->center.x = convertCoordToMark(10, WINDOW_WIDTH);
 	b->center.y = convertCoordToMark(10, WINDOW_HEIGHT);
-	b->speed.x = convertCoordToMark(20, WINDOW_WIDTH);
-	b->speed.y = convertCoordToMark(20, WINDOW_HEIGHT);
+	b->speed.x = convertCoordToMark(DEFAULT_XDIR_BALL, WINDOW_WIDTH);
+	b->speed.y = convertCoordToMark(DEFAULT_YDIR_BALL, WINDOW_HEIGHT);
 	b->radius = convertCoordToMark(20, WINDOW_WIDTH);
 	b->color.r = 1.0;
 	b->color.g = 1.0;
 	b->color.b = 1.0;
 	b->color.alpha = 1.0;
+	b->lastBar = 0;
 
 	return b;
 }
@@ -119,9 +120,43 @@ int brickArea(Ball b, Level level){
 	return 0;
 }
 
-int ballArea(Ball b, Level level){
-	float ball_span[4] = {b.center.x - b.radius, b.center.x + b.radius, b.center.y - b.radius, b.center.y + b.radius};
-	float ball_proportionY = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT) / (b.radius*2);
-	float ball_proportionX = convertCoordToMark(BRICK_WIDTH, WINDOW_WIDTH) / (b.radius*2);
-	return 0;
+int brickIndex(Ball b, Level level){
+	float ballPointY;
+	switch(b.lastBar){
+		case 1 : ballPointY = b.center.y - b.radius;
+		break;
+		case 2 : ballPointY = b.center.y + b.radius;
+		break;
+		case 0 : ballPointY = 0;
+		break;
+		default : ballPointY = b.center.y;
+	}
+	float hBrick = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT);
+	float height_min = - level.nbBrickY/2 * hBrick;
+	float h_span = (ballPointY - height_min)/ hBrick;
+	int i = level.nbBrickY - h_span - 1;
+	float wBrick = convertCoordToMark(BRICK_WIDTH, WINDOW_WIDTH);
+	float w_span = ((b.center.x - convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH)) / wBrick);
+	int j = (int)w_span;
+	int k = i * level.nbBrickX + j;
+	
+	return k;
+}
+
+int collisionBrick(Ball b, Level level, int k){
+	if(k < 0 || k >= level.nbBrickY * level.nbBrickX){
+		return 0;
+	}
+
+	if(level.brick[k].display == 0) return 0;
+
+	switch(b.lastBar){
+		case 1 : return 1;
+		break;
+		case 2 : return 2;
+		break;
+		case 0 : return 0;
+		break;
+		default : return 0;
+	}
 }

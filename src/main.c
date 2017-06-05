@@ -16,6 +16,7 @@
 #include "brick.h"
 #include "texture.h"
 #include "heart.h"
+#include "ball.h"
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -50,9 +51,10 @@ int main(int argc, char** argv) {
 		/*INIT BALLS*/
 		Ball * ball1 = initBall();
 		Ball * ball2 = initBall();
-		setBallPosition(ball1, -100, -100);
-		setBallPosition(ball2, -300, -600);
-		setBallDirection(ball2, -20, -20);
+		setBallPosition(ball1, 0,0 /*-100, -100*/);
+		setBallPosition(ball2, 0,0/*-300, -600*/);
+		setBallDirection(ball1, DEFAULT_XDIR_BALL, DEFAULT_YDIR_BALL);
+		setBallDirection(ball2, -DEFAULT_XDIR_BALL, -DEFAULT_YDIR_BALL);
 
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 
@@ -127,7 +129,8 @@ int main(int argc, char** argv) {
 			float time = 0.2;
 			animate(ball1, time, &player1, &player2);
 			animate(ball2, time, &player1, &player2);
-			hideBricks(ball1, game.level);
+			hideBricks(ball1, &(game.level), &player1, &player2);
+			hideBricks(ball2, &(game.level), &player1, &player2);
 
 			/* Display Bricks */
 			/* In coming */

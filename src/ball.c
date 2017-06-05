@@ -133,11 +133,11 @@ int brickIndex(Ball b, Level level){
 	}
 	float hBrick = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT);
 	float height_min = - level.nbBrickY/2 * hBrick;
-	float h_span = (ballPointY - height_min)/ hBrick;
+	int h_span = (ballPointY - height_min)/ hBrick;
 	int i = level.nbBrickY - h_span - 1;
 	float wBrick = convertCoordToMark(BRICK_WIDTH, WINDOW_WIDTH);
 	float w_span = ((b.center.x - convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH)) / wBrick);
-	int j = (int)w_span;
+	int j = w_span;
 	int k = i * level.nbBrickX + j;
 	
 	return k;

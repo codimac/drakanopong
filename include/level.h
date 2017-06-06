@@ -13,6 +13,7 @@
 	#define MAX_BRICK 100
 	#define MAX_ROW 10
 	#define MAX_COLUMN 10
+	#define NB_LVL 3	
 
 	/* STRUCT */
 	typedef struct Level {

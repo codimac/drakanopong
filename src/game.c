@@ -80,8 +80,72 @@ int gameWinner(Player player1, Player player2, int *end) {
 /*
  * display on screen the winner (don't take into consideration the score yet)
  */
-void displayWinner(int winner) {
-	
+void displayWinner(int playerWin) {
+	glColor3f(0.,0.,0.);
+	rectangle(-1.,-1.);
+	Texture winner;
+	int loop = 1;
+	sprintf(winner.path,"./assets/textures/winner/winner_%d.png", playerWin);
+	loadTexture(&winner);
+	printf("%d\n", winner.id);
+	while(loop) {
+		texturedRectangle(winner.id,-0.5, 0.5);
+		Uint32 startTime = SDL_GetTicks();
+		loop = exitGame();
+		Uint32 elapsedTime = SDL_GetTicks() - startTime;
+		if(elapsedTime < FRAMERATE_MILLISECONDS) {
+			SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+		}
+		SDL_GL_SwapBuffers();
+	}
+}
+
+int mainMenu(){
+	int loop = 1, lvl = 1;
+	while(loop) {
+		Uint32 startTime = SDL_GetTicks();
+
+		SDL_Event e;
+		while(SDL_PollEvent(&e)) {
+			if(e.type == SDL_QUIT) {
+				loop = 0;
+				break;
+			}
+			switch(e.type) {
+				case SDL_KEYDOWN:
+					if (e.key.keysym.sym == 'q' || e.key.keysym.sym == SDLK_ESCAPE) {
+						return -1;
+					}
+					if(e.key.keysym.sym == SDLK_UP){
+						if(lvl == 1) {
+							lvl = NB_LVL;
+						} else {
+							lvl --;
+						}
+						printf("%d\n", lvl);
+					}
+					if(e.key.keysym.sym == SDLK_DOWN){
+						if(lvl == NB_LVL) {
+							lvl = 1;
+						} else {
+							lvl ++;
+						}
+						printf("%d\n", lvl);
+					}
+					if(e.key.keysym.sym == SDLK_KP_ENTER||e.key.keysym.sym == SDLK_RIGHT){
+						return lvl;
+					}
+					break;
+			}
+		}
+		Uint32 elapsedTime = SDL_GetTicks() - startTime;
+		if(elapsedTime < FRAMERATE_MILLISECONDS) {
+			SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+		}
+		SDL_GL_SwapBuffers();
+	}
+
+
 }
 
 void animate(Ball * ball, float time, Player * player1, Player * player2){

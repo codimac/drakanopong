@@ -5,6 +5,7 @@
 #include "elements.h"
 #include "heart.h"
 #include "string.h"
+#include "utils.h"
 
 	Heart initHeart(){
 		Heart h;

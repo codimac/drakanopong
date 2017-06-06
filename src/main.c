@@ -110,11 +110,9 @@ int main(int argc, char** argv) {
 		loadTexture(&t_heart2);
 
 		/*INIT SCORE*/
-		char * string = "1";
-		Text score1 = initText(string);
-		drawText(&score1);
-		char aux[15];
-		strcpy(aux,"0");
+		int scoreMax = 50;
+		Text * scoreTab = initTextTab(scoreMax);
+		loadTexts(scoreTab, scoreMax);
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
@@ -155,9 +153,12 @@ int main(int argc, char** argv) {
 			displayPlayerHearts(heart2, player2, t_heart2);
 
 			/*DISPLAY SCORES*/
-			updateScore(&score1, player1.score, aux);
-			/*drawText(&score1);*/
-			displayScore(-300, 180, score1);
+			if(player1.score >= 0 && player1.score < scoreMax){
+				displayScore(-300, 180, 25, 25, scoreTab[player1.score]); /* pb : player1. score*/
+			}
+			if(player2.score >= 0 && player1.score < scoreMax){
+				displayScore(300, -180, 25, 25, scoreTab[player2.score]); /* pb : player1. score*/
+			}
 
 			SDL_GL_SwapBuffers();
 			/* ****** */
@@ -189,8 +190,8 @@ int main(int argc, char** argv) {
 
 		SDL_Quit();
 		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+		destroyBrickTexture(scoreTab, scoreMax);
 		glDeleteTextures(1, t_heart1.id);
 		glDeleteTextures(1, t_heart2.id);
-		glDeleteTextures(1, score1.id);
 		return EXIT_SUCCESS;
 }

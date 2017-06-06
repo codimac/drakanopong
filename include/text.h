@@ -9,9 +9,9 @@
 		char string[100];
 	} Text;
 
-	void displayScore(int x, int y, Text t);
-	void displayText(float x, float y, Text t);
+	void displayScore(int x, int y, int width, int height, Text t);
+	void displayText(float x, float y, int width, int height, Text t);
 	void drawText(Text * t);
 	Text initText(char * string);
-	void updateScore(Text * score, int n, char * string);
+	Text * initTextTab(int scoreMax);
 #endif

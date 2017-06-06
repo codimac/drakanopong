@@ -17,6 +17,8 @@
 #include "texture.h"
 #include "heart.h"
 #include "ball.h"
+#include "text.h"
+#include <SDL/SDL_ttf.h>
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -38,11 +40,17 @@ void setVideoMode(unsigned int width, unsigned int height) {
 }
 
 int main(int argc, char** argv) {
+
+		if(-1 == TTF_Init()) {
+				fprintf(stderr, "Impossible d'initialiser SDL_TTF. Fin du programme.\n");
+				return EXIT_FAILURE;
+		}
+
 		if(-1 == SDL_Init(SDL_INIT_VIDEO)) {
 				fprintf(stderr, "Impossible d'initialiser la SDL. Fin du programme.\n");
 				return EXIT_FAILURE;
 		}
-
+		
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
@@ -100,7 +108,13 @@ int main(int argc, char** argv) {
 		t_heart2 = initTextureHeart("./assets/textures/hearts/h_2.png");
 		loadTexture(&t_heart1);
 		loadTexture(&t_heart2);
-		
+
+		/*INIT SCORE*/
+		char * string = "1";
+		Text score1 = initText(string);
+		drawText(&score1);
+		char aux[15];
+		strcpy(aux,"0");
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
@@ -140,6 +154,11 @@ int main(int argc, char** argv) {
 			displayPlayerHearts(heart1, player1, t_heart1);
 			displayPlayerHearts(heart2, player2, t_heart2);
 
+			/*DISPLAY SCORES*/
+			updateScore(&score1, player1.score, aux);
+			/*drawText(&score1);*/
+			displayScore(-300, 180, score1);
+
 			SDL_GL_SwapBuffers();
 			/* ****** */
 
@@ -172,5 +191,6 @@ int main(int argc, char** argv) {
 		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 		glDeleteTextures(1, t_heart1.id);
 		glDeleteTextures(1, t_heart2.id);
+		glDeleteTextures(1, score1.id);
 		return EXIT_SUCCESS;
 }

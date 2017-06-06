@@ -2,7 +2,7 @@
 # Linux makefile
 CC = gcc
 CFLAGS = -Wall -ansi
-LDFLAGS = -lSDL -lSDL -lGLU -lGL -lm -lSDL_image
+LDFLAGS = -lSDL -lSDL -lGLU -lGL -lm -lSDL_image -lglut -lSDL_ttf
 
 APP_BIN = Drakanopong
 

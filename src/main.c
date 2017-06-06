@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
 		Game game = newGame();
-
+		int play = 1, end = 0;
 		/*INIT BALLS*/
 		Ball * ball1 = initBall();
 		Ball * ball2 = initBall();
@@ -56,14 +56,20 @@ int main(int argc, char** argv) {
 		setBallDirection(ball1, DEFAULT_XDIR_BALL, DEFAULT_YDIR_BALL);
 		setBallDirection(ball2, -DEFAULT_XDIR_BALL, -DEFAULT_YDIR_BALL);
 
-		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
+		SDL_EnableKeyRepeat(0, 0);
 
 		/* MENU LOOP */
 		/* we don't have a menu yet. */
-
+		int lvl = mainMenu();
+		if(lvl == -1) {
+			play = 0; /* empêche de la jeu de démarré et quitte*/
+		}
+		char level[10];
+		sprintf(level, "_%d", lvl);
+		setGameLevel(&game.level, level );
 		/*GAME START*/
+		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 
-		int play = 1, end = 0;
 		/*
 	****** LOAD LEVEL ******
 		 */
@@ -165,29 +171,10 @@ int main(int argc, char** argv) {
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
 			}
-
-
-
 		}
 
 		if(end !=0){
-			glColor3f(0.,0.,0.);
-			rectangle(-1.,-1.);
-			Texture winner;
-			int loop = 1;
-			sprintf(winner.path,"./assets/textures/winner/winner_%d.png", end);
-			loadTexture(&winner);
-			printf("%d\n", winner.id);
-			while(loop) {
-				texturedRectangle(winner.id,-0.5, 0.5);
-				Uint32 startTime = SDL_GetTicks();
-				loop = exitGame();
-				Uint32 elapsedTime = SDL_GetTicks() - startTime;
-				if(elapsedTime < FRAMERATE_MILLISECONDS) {
-					SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
-				}
-				SDL_GL_SwapBuffers();
-			}
+			displayWinner(end);
 		}
 
 		SDL_Quit();

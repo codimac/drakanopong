@@ -81,7 +81,7 @@ int gameWinner(Player player1, Player player2, int *end) {
  * display on screen the winner (don't take into consideration the score yet)
  */
 void displayWinner(int winner) {
-	
+
 }
 
 void animate(Ball * ball, float time, Player * player1, Player * player2){
@@ -210,7 +210,7 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 				case 2 : {
 					if(level->brick[k].durability <= 0){
 						level->brick[k].display = 0;
-					} 
+					}
 					else {
 						level->brick[k].durability -=1;
 					}
@@ -220,7 +220,8 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 					testBonus(level->brick[k], player1);
 				}
 				break;
-				default :;
+				default :
+					break;
 			}
 		}
 	}
@@ -228,22 +229,19 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 
 	void testBonus(Brick brick, Player * player){
 		switch(brick.type){
-			case ELIXIR :{
+			case ELIXIR :
 				if(player->lives < DEFAULT_HEARTS){
 					player->lives+=1;
 				}
-			}
-			break;
-			case EXPAND_PLAYER_BAR: {
+				break;
+			case EXPAND_PLAYER_BAR:
 				updateSizeBar(&(player->bar), 2);
-			}
-			break;
-			case WALL :;
-			break;
-			case HIDDEN :;
-			break;
-			case BASIC :updateSizeBar(&(player->bar), 2);
-			break;
+				break;
+			case WALL :
+			case HIDDEN :
+			case BASIC :
+				updateSizeBar(&(player->bar), 2);
+				break;
 			default :;
 		}
 	}

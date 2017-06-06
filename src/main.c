@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 				fprintf(stderr, "Impossible d'initialiser la SDL. Fin du programme.\n");
 				return EXIT_FAILURE;
 		}
-		
+
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
-
+		updateSizeBar(&(player1.bar), 2);
 
 		/************************
 		 *    GAME MAIN LOOP    *
@@ -185,9 +185,9 @@ int main(int argc, char** argv) {
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
 			}
-
-
-
+			if(end !=0) {
+				play = 0;
+			}
 		}
 
 		if(end !=0){

@@ -6,6 +6,7 @@
 	#include <GL/gl.h>
 	#include "elements.h"
 	#include "texture.h"
+	#include "utils.h"
 
 	static unsigned int DEFAULT_WIDTH_HEART = 40;
 	static unsigned int DEFAULT_HEIGHT_HEART = 40;

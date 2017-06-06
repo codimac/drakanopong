@@ -217,7 +217,7 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 					ball->center.y = level->brick[k].position.y - hBrick - ball->radius;
 					ball->speed.y = -ball->speed.y;
 					player2->score += 1;
-					testBonus(level->brick[k], player1);
+					testBonus(level->brick[k], player2);
 				}
 				break;
 				default :
@@ -240,7 +240,6 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 			case WALL :
 			case HIDDEN :
 			case BASIC :
-				updateSizeBar(&(player->bar), 2);
 				break;
 			default :;
 		}

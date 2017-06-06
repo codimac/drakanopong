@@ -116,7 +116,6 @@ int main(int argc, char** argv) {
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
-		updateSizeBar(&(player1.bar), 2);
 
 		/************************
 		 *    GAME MAIN LOOP    *

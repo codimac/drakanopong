@@ -59,14 +59,20 @@ int main(int argc, char** argv) {
 		SDL_EnableKeyRepeat(0, 0);
 
 		/* MENU LOOP */
-		/* we don't have a menu yet. */
+		/* we don't have a graphic menu yet.
+		* Uncomment bellow to try to change the lvl. To see wich level you are on, the terminal is your friend.
+		* left arrow instead of enter to start playing
+		*/
+		/*
 		int lvl = mainMenu();
 		if(lvl == -1) {
-			play = 0; /* empêche de la jeu de démarré et quitte*/
-		}
+			play = 0; /* empêche de la jeu de démarrer et quitte*/
+		/*}
+
 		char level[10];
 		sprintf(level, "_%d", lvl);
 		setGameLevel(&game.level, level );
+		*/
 		/*GAME START*/
 		SDL_EnableKeyRepeat(10, 10); /* Value random. Need to read the doc ahah for more accurate value */
 

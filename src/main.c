@@ -106,7 +106,6 @@ int main(int argc, char** argv) {
 		Uint8 *keystates = SDL_GetKeyState(NULL);
 
 
-
 		/************************
 		 *    GAME MAIN LOOP    *
 		 ***********************/
@@ -159,9 +158,9 @@ int main(int argc, char** argv) {
 				moveBar(&(player2.bar), left);
 			}
 
-			play = exitGame();
-			play =  gameWinner(player1, player2, &end);
 
+			play =  gameWinner(player1, player2, &end);
+			play = exitGame();
 			Uint32 elapsedTime = SDL_GetTicks() - startTime;
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
@@ -172,7 +171,7 @@ int main(int argc, char** argv) {
 		}
 
 		if(end !=0){
-			glColor3f(1.,1.,1.);
+			glColor3f(0.,0.,0.);
 			rectangle(-1.,-1.);
 			Texture winner;
 			int loop = 1;

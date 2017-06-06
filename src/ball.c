@@ -73,14 +73,14 @@ int collision(Ball * b, Bar bar1, Bar bar2){
 
 	/*If collision with player1's bar (top bar), return 2*/
 
-	if((b->center.x + b->radius) >= (bar1.position.x - x1)  && (b->center.x - b->radius) <= (bar1.position.x + x1) 
+	if((b->center.x + b->radius) >= (bar1.position.x - x1)  && (b->center.x - b->radius) <= (bar1.position.x + x1)
 		&& (b->center.y + b->radius) >= (bar1.position.y - y) && (b->center.y - b->radius) <= (bar1.position.y + y)){
 		return 2;
 	}
 
 	/*If collision with player2's bar (bottom bar), return - 2*/
 
-	if((b->center.x + b->radius) >= (bar2.position.x - x2)  && (b->center.x - b->radius) <= (bar2.position.x + x2) 
+	if((b->center.x + b->radius) >= (bar2.position.x - x2)  && (b->center.x - b->radius) <= (bar2.position.x + x2)
 		&& (b->center.y - b->radius) <= (bar2.position.y + y) && (b->center.y + b->radius) >= (bar2.position.y - y)){
 		return -2;
 	}
@@ -139,7 +139,6 @@ int brickIndex(Ball b, Level level){
 	float w_span = ((b.center.x - convertCoordToMark(-(float)GAME_WIDTH/2, WINDOW_WIDTH)) / wBrick);
 	int j = w_span;
 	int k = i * level.nbBrickX + j;
-	
 	return k;
 }
 

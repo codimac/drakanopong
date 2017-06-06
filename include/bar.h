@@ -26,5 +26,5 @@
 	void moveBar(Bar *b, int direction);
 	void displayBar(const Bar b);
 	void setBarPosition(Bar *b, int x, int y);
-
+	void updateSizeBar(Bar *b, float mult);
 #endif

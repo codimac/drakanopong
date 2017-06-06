@@ -27,6 +27,14 @@ void setBarPosition(Bar *b, int x, int y) {
 	b->position.y = convertPixelToMark(y, WINDOW_HEIGHT, axisY);
 }
 
+/*
+ * update the size of the bar
+ */
+void updateSizeBar(Bar *b, float mult){
+	if(b->size >  centeredPixelToMark(3*DEFAULT_WIDTH_BAR, WINDOW_WIDTH, axisX)) {
+		b->size = centeredPixelToMark(  mult * DEFAULT_WIDTH_BAR, WINDOW_WIDTH, axisX);
+	}
+}
 /**
  * move Bar depending on the player input
  * @method moveBar

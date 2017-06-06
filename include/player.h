@@ -6,6 +6,8 @@
 	#include <GL/gl.h>
 	#include "elements.h"
 	#include "bar.h"
+	
+	static unsigned int DEFAULT_HEARTS = 5;
 
 	/* PLAYERS */
 	typedef struct Player {

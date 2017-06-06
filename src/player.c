@@ -6,7 +6,7 @@
 #include "player.h"
 #include "bar.h"
 
-static unsigned int DEFAULT_HEARTS = 5;
+/*static unsigned int DEFAULT_HEARTS = 5;*/
 
 Player initPlayer(char name[]){
 	Player p;

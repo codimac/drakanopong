@@ -110,7 +110,7 @@ int main(int argc, char** argv) {
 		loadTexture(&t_heart2);
 
 		/*INIT SCORE*/
-		int scoreMax = 50;
+		int scoreMax = 60;
 		Text * scoreTab = initTextTab(scoreMax);
 		loadTexts(scoreTab, scoreMax);
 

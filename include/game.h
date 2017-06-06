@@ -39,5 +39,6 @@
 	void displayPlayerHearts(Heart * h, Player player, Texture texture);
 	Heart * initPlayerHearts(Player player);
 	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin, int side);
+	void testBonus(Brick brick, Player * player);
 
 #endif

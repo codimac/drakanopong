@@ -190,8 +190,6 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 		float hBrick = convertCoordToMark(BRICK_HEIGHT, WINDOW_HEIGHT);
 
 		if(brickArea(*ball, *level)){
-			ball->color.g = 0;
-			ball->color.b = 0;
 			switch(collisionBrick(*ball, *level, k)){
 				case 0 :;
 				break;
@@ -205,6 +203,7 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 					ball->center.y = level->brick[k].position.y + hBrick + ball->radius;
 					ball->speed.y = -ball->speed.y;
 					player1->score += 1;
+					testBonus(level->brick[k], player1);
 
 				}
 				break;
@@ -218,13 +217,33 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 					ball->center.y = level->brick[k].position.y - hBrick - ball->radius;
 					ball->speed.y = -ball->speed.y;
 					player2->score += 1;
+					testBonus(level->brick[k], player1);
 				}
 				break;
 				default :;
 			}
 		}
-		else {
-			ball->color.g = 1.0;
-			ball->color.b = 1.0;
+	}
+
+
+	void testBonus(Brick brick, Player * player){
+		switch(brick.type){
+			case ELIXIR :{
+				if(player->lives < DEFAULT_HEARTS){
+					player->lives+=1;
+				}
+			}
+			break;
+			case EXPAND_PLAYER_BAR: {
+				updateSizeBar(&(player->bar), 2);
+			}
+			break;
+			case WALL :;
+			break;
+			case HIDDEN :;
+			break;
+			case BASIC :updateSizeBar(&(player->bar), 2);
+			break;
+			default :;
 		}
 	}

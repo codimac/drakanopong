@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 #include "elements.h"
 #include "bar.h"
+#include "utils.h"
 
 Bar initBar(){
 	Bar b;

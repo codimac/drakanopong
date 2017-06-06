@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
 
 		/*GAME START*/
 
-		int play = 1;
+		int play = 1, end = 0;
 		/*
 	****** LOAD LEVEL ******
 		 */
@@ -100,7 +100,7 @@ int main(int argc, char** argv) {
 		t_heart2 = initTextureHeart("./assets/textures/hearts/h_2.png");
 		loadTexture(&t_heart1);
 		loadTexture(&t_heart2);
-		
+
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
@@ -133,7 +133,6 @@ int main(int argc, char** argv) {
 			hideBricks(ball2, &(game.level), &player1, &player2);
 
 			/* Display Bricks */
-			/* In coming */
 			glColor3f(0.3,0.3,0.2);
 			displayLevel(game.level);
 			/*DISPLAY LIVES*/
@@ -161,15 +160,39 @@ int main(int argc, char** argv) {
 			}
 
 			play = exitGame();
+			play =  gameWinner(player1, player2, &end);
 
 			Uint32 elapsedTime = SDL_GetTicks() - startTime;
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
 			}
+
+
+
+		}
+
+		if(end !=0){
+			glColor3f(1.,1.,1.);
+			rectangle(-1.,-1.);
+			Texture winner;
+			int loop = 1;
+			sprintf(winner.path,"./assets/textures/winner/winner_%d.png", end);
+			loadTexture(&winner);
+			printf("%d\n", winner.id);
+			while(loop) {
+				texturedRectangle(winner.id,-0.5, 0.5);
+				Uint32 startTime = SDL_GetTicks();
+				loop = exitGame();
+				Uint32 elapsedTime = SDL_GetTicks() - startTime;
+				if(elapsedTime < FRAMERATE_MILLISECONDS) {
+					SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+				}
+				SDL_GL_SwapBuffers();
+			}
 		}
 
 		SDL_Quit();
-		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+		glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);
 		glDeleteTextures(1, t_heart1.id);
 		glDeleteTextures(1, t_heart2.id);
 		return EXIT_SUCCESS;

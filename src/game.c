@@ -1,12 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <SDL/SDL.h>
 #include "game.h"
 #include "bar.h"
 #include "player.h"
 #include "elements.h"
 #include "ball.h"
 #include "level.h"
+#include "texture.h"
+
+static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 
 /**
  * create a default game settings
@@ -58,6 +62,26 @@ int exitGame(){
 		}
 	}
 	return 1;
+}
+/*
+ * Detect if someone lost.
+ */
+int gameWinner(Player player1, Player player2, int *end) {
+	if(player1.lives == 0) {
+		*end = 1;
+		return 0;
+	} else if (player2.lives == 0) {
+		*end = 2;
+		return 0;
+	} else {
+		return 1;
+	}
+}
+/*
+ * display on screen the winner (don't take into consideration the score yet)
+ */
+void displayWinner(int winner) {
+	
 }
 
 void animate(Ball * ball, float time, Player * player1, Player * player2){

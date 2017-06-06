@@ -15,7 +15,7 @@ void loadTexture(Texture *t){
 
 	SDL_Surface* img = IMG_Load(t->path);
 	if(img == NULL) {
-		printf("null\n");
+		printf("texture null\n");
 		exit(EXIT_FAILURE);
 	}
 	GLenum format;

@@ -5,6 +5,7 @@
 	#include <math.h>
 	#include <GL/gl.h>
 	#include "elements.h"
+	#include "utils.h"
 
 	static unsigned int MARGIN_BAR = 25;
 	static unsigned int DEFAULT_WIDTH_BAR = 75;

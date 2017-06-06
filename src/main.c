@@ -17,6 +17,8 @@
 #include "texture.h"
 #include "heart.h"
 #include "ball.h"
+#include "text.h"
+#include <SDL/SDL_ttf.h>
 
 static const unsigned int BIT_PER_PIXEL = 32;
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
@@ -38,11 +40,17 @@ void setVideoMode(unsigned int width, unsigned int height) {
 }
 
 int main(int argc, char** argv) {
+
+		if(-1 == TTF_Init()) {
+				fprintf(stderr, "Impossible d'initialiser SDL_TTF. Fin du programme.\n");
+				return EXIT_FAILURE;
+		}
+
 		if(-1 == SDL_Init(SDL_INIT_VIDEO)) {
 				fprintf(stderr, "Impossible d'initialiser la SDL. Fin du programme.\n");
 				return EXIT_FAILURE;
 		}
-
+		
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
@@ -101,6 +109,10 @@ int main(int argc, char** argv) {
 		loadTexture(&t_heart1);
 		loadTexture(&t_heart2);
 
+		/*INIT SCORE*/
+		int scoreMax = 50;
+		Text * scoreTab = initTextTab(scoreMax);
+		loadTexts(scoreTab, scoreMax);
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
@@ -137,6 +149,14 @@ int main(int argc, char** argv) {
 			/*DISPLAY LIVES*/
 			displayPlayerHearts(heart1, player1, t_heart1);
 			displayPlayerHearts(heart2, player2, t_heart2);
+
+			/*DISPLAY SCORES*/
+			if(player1.score >= 0 && player1.score < scoreMax){
+				displayScore(-300, 180, 25, 25, scoreTab[player1.score]); /* pb : player1. score*/
+			}
+			if(player2.score >= 0 && player1.score < scoreMax){
+				displayScore(300, -180, 25, 25, scoreTab[player2.score]); /* pb : player1. score*/
+			}
 
 			SDL_GL_SwapBuffers();
 			/* ****** */
@@ -191,7 +211,10 @@ int main(int argc, char** argv) {
 		}
 
 		SDL_Quit();
+
 		glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);
+		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
+		destroyBrickTexture(scoreTab, scoreMax);
 		glDeleteTextures(1, t_heart1.id);
 		glDeleteTextures(1, t_heart2.id);
 		return EXIT_SUCCESS;

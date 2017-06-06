@@ -196,7 +196,12 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 				case 0 :;
 				break;
 				case 1 : {
-					level->brick[k].display = 0;
+					if(level->brick[k].durability <= 0){
+						level->brick[k].display = 0;
+					}
+					else {
+						level->brick[k].durability -=1;
+					}
 					ball->center.y = level->brick[k].position.y + hBrick + ball->radius;
 					ball->speed.y = -ball->speed.y;
 					player1->score += 1;
@@ -204,7 +209,12 @@ void animate(Ball * ball, float time, Player * player1, Player * player2){
 				}
 				break;
 				case 2 : {
-					level->brick[k].display = 0;
+					if(level->brick[k].durability <= 0){
+						level->brick[k].display = 0;
+					} 
+					else {
+						level->brick[k].durability -=1;
+					}
 					ball->center.y = level->brick[k].position.y - hBrick - ball->radius;
 					ball->speed.y = -ball->speed.y;
 					player2->score += 1;

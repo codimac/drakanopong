@@ -212,7 +212,7 @@ int main(int argc, char** argv) {
 
 		SDL_Quit();
 
-		glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);
+		/*glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);*/
 		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 		destroyBrickTexture(scoreTab, scoreMax);
 		glDeleteTextures(1, t_heart1.id);

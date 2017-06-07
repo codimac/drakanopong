@@ -31,7 +31,7 @@ void setBarPosition(Bar *b, int x, int y) {
  * update the size of the bar
  */
 void updateSizeBar(Bar *b, float mult){
-	if(b->size >  centeredPixelToMark(3*DEFAULT_WIDTH_BAR, WINDOW_WIDTH, axisX)) {
+	if(mult < 4) {
 		b->size = centeredPixelToMark(  mult * DEFAULT_WIDTH_BAR, WINDOW_WIDTH, axisX);
 	}
 }

@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 				fprintf(stderr, "Impossible d'initialiser la SDL. Fin du programme.\n");
 				return EXIT_FAILURE;
 		}
-		
+
 		setVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
 		SDL_WM_SetCaption("DRAKANOPONG", NULL);
 		/* Create the game with default value*/
@@ -122,13 +122,12 @@ int main(int argc, char** argv) {
 		loadTexture(&t_heart2);
 
 		/*INIT SCORE*/
-		int scoreMax = 50;
+		int scoreMax = 60;
 		Text * scoreTab = initTextTab(scoreMax);
 		loadTexts(scoreTab, scoreMax);
 
 		setBarPosition(&(player2.bar),WINDOW_WIDTH/2, WINDOW_HEIGHT-MARGIN_BAR);
 		Uint8 *keystates = SDL_GetKeyState(NULL);
-
 
 		/************************
 		 *    GAME MAIN LOOP    *
@@ -197,6 +196,9 @@ int main(int argc, char** argv) {
 			if(elapsedTime < FRAMERATE_MILLISECONDS) {
 				SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
 			}
+			if(end !=0) {
+				play = 0;
+			}
 		}
 
 		if(end !=0){
@@ -205,7 +207,7 @@ int main(int argc, char** argv) {
 
 		SDL_Quit();
 
-		glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);
+		/*glDeleteTextures(game.level.nbTypeBrickUsed, game.level.brickTextureId[0].id);*/
 		destroyBrickTexture(game.level.brickTextureId, game.level.nbTypeBrickUsed);
 		destroyBrickTexture(scoreTab, scoreMax);
 		glDeleteTextures(1, t_heart1.id);

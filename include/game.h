@@ -5,12 +5,19 @@
 	#include <stdio.h>
 	#include <math.h>
 	#include <SDL/SDL.h>
-	#include "level.h"
-	#include "elements.h"
+	#include <SDL/SDL_ttf.h>
+
+	#include "game.h"
 	#include "bar.h"
 	#include "player.h"
+	#include "elements.h"
+	#include "utils.h"
+	#include "level.h"
+	#include "brick.h"
+	#include "texture.h"
 	#include "heart.h"
-	#include <SDL/SDL.h>
+	#include "ball.h"
+	#include "level.h"
 
 	typedef enum Hardness{
 		easy, normal, hardcore
@@ -32,13 +39,13 @@
 
 	void initGame(Game game);
 	Game newGame();
-	void drawGame();
+	void playGame(Game game);
 	int exitGame();
 
 	void animate(Ball * ball, float time, Player * player1, Player * player2);
 	void displayPlayerHearts(Heart * h, Player player, Texture texture);
 	Heart * initPlayerHearts(Player player);
 	void setPlayerHearts(Heart * h, Player player, int x, int y, int margin, int side);
-	void testBonus(Brick brick, Player * player);
+	void hideBricks(Ball * ball, Level * level, Player * player1, Player * player2);
 
 #endif

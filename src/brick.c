@@ -7,6 +7,8 @@
 #include "elements.h"
 #include "brick.h"
 #include "texture.h"
+#include "level.h"
+#include "player.h"
 
 void initBrick(Brick *b, float x, float y){
 
@@ -59,4 +61,25 @@ void destroyBrickTexture(Texture t[], int nbBrickUsed){
         glDeleteTextures(1,t[i].id);
     }
 
+}
+
+
+
+void testBonus(Brick brick, Player * player){
+    switch(brick.type){
+        case ELIXIR :
+            if(player->lives < DEFAULT_HEARTS){
+                player->lives+=1;
+            }
+            break;
+        case EXPAND_PLAYER_BAR:
+            updateSizeBar(&(player->bar), 2);
+            break;
+        case WALL :
+        case HIDDEN :
+        case BASIC :
+            break;
+        default :
+            break;
+    }
 }

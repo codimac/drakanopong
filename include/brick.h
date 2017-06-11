@@ -8,6 +8,7 @@
 	#include "utils.h"
 	#include "elements.h"
 	#include "texture.h"
+	#include "player.h"
 
 	#define NB_TYPE_BRICK 6
 
@@ -31,4 +32,5 @@
 	void initBrick(Brick *b, float x, float y);
 	void loadBrickTexture(Texture *t, int nbBrickUsed);
 	void destroyBrickTexture(Texture t[], int nbBrickUsed);
+	void testBonus(Brick brick, Player * player);
 #endif

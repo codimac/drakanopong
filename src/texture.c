@@ -9,17 +9,21 @@
 #include <GL/glu.h>
 
 #include "texture.h"
+#include "utils.h"
 
 void loadTexture(Texture *t){
 	SDL_Surface* img = IMG_Load(t->path);
 
 	if(img == NULL) {
 		printf("texture null\n");
+		printf("%s\n", t->path);
 		exit(EXIT_FAILURE);
 	}
 
-	createTexture(t, img);
+	t->height = convertPixelToMark(img->h, WINDOW_HEIGHT, axisY);
+	t->width = convertPixelToMark(img->w, WINDOW_WIDTH, axisX);
 
+	createTexture(t, img);
 	SDL_FreeSurface(img);
 }
 

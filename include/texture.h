@@ -9,10 +9,14 @@
 	#include <GL/glu.h>
 	#include <GL/gl.h>
 
+	#include "utils.h"
 
 	typedef struct Texture{
 		GLuint id;
+		float width;
+		float height;
 		char path[100];
+
 	} Texture;
 
 	#define TEXTURE(id) (Texture){ 0 }

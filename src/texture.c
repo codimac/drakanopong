@@ -11,13 +11,20 @@
 #include "texture.h"
 
 void loadTexture(Texture *t){
-	glGenTextures(1,&(t->id));
-
 	SDL_Surface* img = IMG_Load(t->path);
+
 	if(img == NULL) {
 		printf("texture null\n");
 		exit(EXIT_FAILURE);
 	}
+
+	createTexture(t, img);
+
+	SDL_FreeSurface(img);
+}
+
+void createTexture(Texture *t, SDL_Surface *img) {
+	glGenTextures(1,&(t->id));
 	GLenum format;
 	/*printf("img->format->BytesPerPixel : %d\n", img->format->BytesPerPixel );*/
 	if(img != NULL){
@@ -41,10 +48,8 @@ void loadTexture(Texture *t){
 	glTexImage2D( GL_TEXTURE_2D,0, format, img->w, img->h, 0, format, GL_UNSIGNED_BYTE, img->pixels);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	SDL_FreeSurface(img);
 	glBindTexture(GL_TEXTURE_2D,0);
 }
-
 void texturedRectangle(GLuint textureId,float x, float y){
 	glColor3f(1.,1.,1.);
 	glEnable(GL_TEXTURE_2D);

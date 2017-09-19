@@ -18,6 +18,7 @@
 	#define TEXTURE(id) (Texture){ 0 }
 
 	void loadTexture(Texture *t);
+	void createTexture(Texture *t, SDL_Surface *img);
 	void texturedRectangle(GLuint textureId,float x, float y);
 	void deleteTextures(Texture t[], int nbTexture);
 #endif
